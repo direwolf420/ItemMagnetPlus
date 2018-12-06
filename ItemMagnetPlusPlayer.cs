@@ -70,11 +70,10 @@ namespace ItemMagnetPlus
         {
             DeactivateMagnet(player);
         }
-        
-        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+
+        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
         {
             DeactivateMagnet(player);
-            return true;
         }
 
         public void UpdateMagnetValues(ItemMagnetPlusPlayer mPlayer, int currentRadius)
