@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -69,10 +70,11 @@ namespace ItemMagnetPlus
         {
             DeactivateMagnet(player);
         }
-
-        public override void OnRespawn(Player player)
+        
+        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
             DeactivateMagnet(player);
+            return true;
         }
 
         public void UpdateMagnetValues(ItemMagnetPlusPlayer mPlayer, int currentRadius)
