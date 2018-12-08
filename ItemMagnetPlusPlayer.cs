@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -17,6 +18,7 @@ namespace ItemMagnetPlus
         public int magnetScale = 1;
         public int magnetVelocity = 8;
         public int magnetAcceleration = 8;
+        public int[] magnetBlacklist = new int[50]; //only populated when player activates magnet, not changed during gameplay
         //public int counter = 30;
         public int clientcounter = 30;
 
@@ -40,9 +42,53 @@ namespace ItemMagnetPlus
             ItemMagnetPlusPlayer clone = clientClone as ItemMagnetPlusPlayer;
         }
 
+        private int[] MagnetBlacklist(ItemMagnetPlusPlayer mPlayer)
+        {
+            //list of item types to ignore
+            //TODO make this more efficient with LINQ stuff
+            //also make this more general
+            string[] stringBlacklist = ModConf.Filter.Split(new string[] { "," }, 50, StringSplitOptions.RemoveEmptyEntries);
+            string[] lowerCase = new string[stringBlacklist.Length];
+            int[] typeBlacklist = new int[50];
+            for (int i = 0; i < stringBlacklist.Length; i++)
+            {
+                lowerCase[i] = stringBlacklist[i].Trim();
+            }
+            string[] lowerCaseDistinct = lowerCase.Distinct().ToArray();
+            int j = -1;
+            for (int i = 0; i < lowerCaseDistinct.Length; i++)
+            {
+                if (lowerCaseDistinct[i] == "heart")
+                {
+                    typeBlacklist[++j] = 58;
+                    typeBlacklist[++j] = 1734;
+                    typeBlacklist[++j] = 1867;
+                    //58 || Main.item[j].type == 1734 || Main.item[j].type == 1867
+                }
+                if (lowerCaseDistinct[i] == "mana")
+                {
+                    typeBlacklist[++j] = 184;
+                    typeBlacklist[++j] = 1735;
+                    typeBlacklist[++j] = 1868;
+                    //184 || Main.item[j].type == 1735 || Main.item[j].type == 1868
+                }
+                if (lowerCaseDistinct[i] == "coin")
+                {
+                    typeBlacklist[++j] = 330;
+                    typeBlacklist[++j] = 331;
+                    typeBlacklist[++j] = 332;
+                    typeBlacklist[++j] = 333;
+                    //184 || Main.item[j].type == 1735 || Main.item[j].type == 1868
+                }
+            }
+            Array.Resize(ref typeBlacklist, j + 1);
+            return typeBlacklist;
+        }
+
         public void ActivateMagnet(Player player)
         {
-            if(ModConf.Buff != 0) // != 0 is buff
+            magnetBlacklist = MagnetBlacklist(player.GetModPlayer<ItemMagnetPlusPlayer>(mod));
+            if (ModConf.Buff != 0) // != 0 is buff
             {
                 player.AddBuff(mod.BuffType("ItemMagnetBuff"), 3600, true);
             }
@@ -61,6 +107,7 @@ namespace ItemMagnetPlus
             }
             else
             {
+                player.ClearBuff(mod.BuffType("ItemMagnetBuff"));
                 ItemMagnetPlusPlayer mPlayer = player.GetModPlayer<ItemMagnetPlusPlayer>(mod);
                 mPlayer.magnetActive = 0;
             }
@@ -181,11 +228,6 @@ namespace ItemMagnetPlus
 
         public override void PreUpdate()
         {
-            //new for no buff
-            //if(ModConf.Buff == 0)
-            //{
-            //    ActivateMagnet(player);
-            //}
 
             //Main.NewText(magnetGrabRadius);
             //Main.NewText(magnetMaxGrabRadius);
@@ -214,34 +256,38 @@ namespace ItemMagnetPlus
                         {
                             if (player.inventory[player.selectedItem].type != 0 || player.itemAnimation <= 0)
                             {
-                                //Main.NewText("wtf");
-                                //so it can go through walls
-                                Main.item[j].beingGrabbed = true;
-                                //velocity, higher = more speed
-                                int velo = magnetVelocity; //16 default
-
-                                Vector2 vector = new Vector2(Main.item[j].position.X + (float)(Main.item[j].width / 2), Main.item[j].position.Y + (float)(Main.item[j].height / 2));
-                                float distanceX = player.Center.X - vector.X;
-                                float distanceY = player.Center.Y - vector.Y;
-                                float normalDistance = (float)Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
-                                normalDistance = ((float)velo) / normalDistance;
-                                distanceX *= normalDistance;
-                                distanceY *= normalDistance;
-
-                                //acceleration, higher = less acceleration
-                                int accel = -(magnetAcceleration - 41); //20 default
-
-                                // num1 goes linear, num2 goes inverse
-                                Main.item[j].velocity.X = (Main.item[j].velocity.X * (float)(accel - 1) + distanceX) / (float)accel;
-                                Main.item[j].velocity.Y = (Main.item[j].velocity.Y * (float)(accel - 1) + distanceY) / (float)accel;
-
-                                if (Main.rand.NextFloat() < 0.7f)
+                                if(Array.BinarySearch(magnetBlacklist, Main.item[j].type) < 0)
                                 {
-                                    Dust dust = Main.dust[Dust.NewDust(Main.item[j].position, 30, 30, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];
-                                    dust.noGravity = true;
-                                    dust.noLight = true;
+                                    //Main.NewText("wtf");
+                                    //so it can go through walls
+                                    Main.item[j].beingGrabbed = true;
+                                    //velocity, higher = more speed
+                                    int velo = magnetVelocity; //16 default
+
+                                    Vector2 vector = new Vector2(Main.item[j].position.X + (float)(Main.item[j].width / 2), Main.item[j].position.Y + (float)(Main.item[j].height / 2));
+                                    float distanceX = player.Center.X - vector.X;
+                                    float distanceY = player.Center.Y - vector.Y;
+                                    float normalDistance = (float)Math.Sqrt((double)(distanceX * distanceX + distanceY * distanceY));
+                                    normalDistance = ((float)velo) / normalDistance;
+                                    distanceX *= normalDistance;
+                                    distanceY *= normalDistance;
+
+                                    //acceleration, higher = more acceleration
+                                    if (magnetAcceleration > 40) magnetAcceleration = 40;
+                                    int accel = -(magnetAcceleration - 41); //20 default
+
+                                    // num1 goes linear, num2 goes inverse
+                                    Main.item[j].velocity.X = (Main.item[j].velocity.X * (float)(accel - 1) + distanceX) / (float)accel;
+                                    Main.item[j].velocity.Y = (Main.item[j].velocity.Y * (float)(accel - 1) + distanceY) / (float)accel;
+
+                                    if (Main.rand.NextFloat() < 0.7f)
+                                    {
+                                        Dust dust = Main.dust[Dust.NewDust(Main.item[j].position, 30, 30, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];
+                                        dust.noGravity = true;
+                                        dust.noLight = true;
+                                    }
+                                    //Main.NewText("drawing in item " + Main.item[j].Name);
                                 }
-                                //Main.NewText("drawing in item " + Main.item[j].Name);
                             }
                         }
                     }
