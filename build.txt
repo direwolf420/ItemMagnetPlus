@@ -1,5 +1,5 @@
 author = direwolf420
-version = 0.1.3
+version = 0.1.4
 displayName = ItemMagnetPlus
 homepage = https://github.com/direwolf420/ItemMagnetPlus#itemmagnetplus
 hideCode = true

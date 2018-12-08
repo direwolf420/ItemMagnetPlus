@@ -24,26 +24,38 @@ How to use:
 * If you plan on using this in multiplayer, make sure that everyone has the same config
 
 Progression: (default config)
+
  Starts with:
+
  Range = 10 (Blocks in each direction)
+
  Velocity = 8
+
  Acceleration = 8
 
+
 Ends with: (killing Moonlord)
+
  Range = 120 (one and a half screens)
+
  Velocity = 32
+
  Acceleration = 32
+
 
  About the config:
 * Buff decides if it gives you a corresponding buff icon to show the status of the magnet
+* Filter decides what do ignore when using the magnet (only hearts, mana stars and coins supported for now)
 * Range starts from 10, but can be as big as you want
-* Velocity can also be as big as you want, but acceleration is capped at 40 to prevent items wobbling around the player too much
+* If you increase Vel or Acc too much from those recommended above, items might get "stuck" on you until you deactivate it again
 * Beware of lag when increasing these values, especially range
 * If the difference between velocity and acceleration is too big, items will go in circles around you or get stuck until you deactivate it
 * If you change the version number, your config might get reset, so don't touch it 
 
 
  Changelog:
+ 
+ v0.1.4: Added blacklist "filter" to be able to filter hearts, mana stars and coins (for now)
 
  v0.1.3: Added config flag "buff" to be able to decide if a buff should be applied while the magnet is active
 
