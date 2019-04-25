@@ -47,7 +47,7 @@ namespace ItemMagnetPlus
                         filter = reader.ReadString();      //string
                         mPlayer = Main.player[playernumber].GetModPlayer<ItemMagnetPlusPlayer>();
                         mPlayer.clientConf = new ItemMagnetPlusPlayer.ClientConf(range, scale, velocity, acceleration, buff, filter);
-                        mPlayer.magnetBlacklist = mPlayer.MagnetBlacklist();
+                        mPlayer.MagnetBlacklist();
 
                         //in addition to recieving the server config, get all info about the players
 
