@@ -25,9 +25,9 @@ Item Magnet (and corresponding buff) that
 ### Multiplayer:
 * This mod is multiplayer compatible, the config is entirely server side, but the buff flag is forced to 1
 * Items that are inbetween two players with magnets will "float"
-* Certain items (i.e. Boss bags in expert mode) will be pulled by all players even though it might not be picked up
 * Due to the way the "grab delay" is only set in singleplayer, items dropped by the player will instantly latch onto the player, which is normal behavior
 * Items might not get sucked up and turn into a "ghost" with the Auto Trash Mod enabled
+* Lost items due to this bug won't be recovered
 * Report any bugs in the forum thread
 
 ### Progression: (default config)
@@ -55,6 +55,8 @@ Ends with: (killing Moonlord)
 * If you change the version number, your config might get reset, so don't touch it 
 
 ### Changelog:
+
+ v0.1.10: Scale spark rate on pulled items, fixed some desync bugs in MP, fixed grab bags being pulled in by all players
 
  v0.1.9: Fixed desync bug with more than two players in MP
 

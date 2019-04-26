@@ -203,20 +203,20 @@ namespace ItemMagnetPlus
 
         public void ActivateMagnet(Player player)
         {
-            if (clientConf.Buff != 0) // != 0 is buff
+            if (clientConf.Buff != 1)
             {
-                player.AddBuff(mod.BuffType("ItemMagnetBuff"), 3600);
+                magnetActive = 1;
             }
             else
             {
-                magnetActive = 1;
+                player.AddBuff(mod.BuffType("ItemMagnetBuff"), 3600);
             }
         }
 
         public void DeactivateMagnet(Player player)
         {
             player.ClearBuff(mod.BuffType("ItemMagnetBuff"));
-            if (clientConf.Buff == 0) // == 0 is no buff
+            if (clientConf.Buff != 1)
             {
                 magnetActive = 0;
             }
@@ -425,7 +425,8 @@ namespace ItemMagnetPlus
                                     if (Main.netMode != NetmodeID.Server)
                                     {
                                         float dustChance = distance.Length() < player.height ? 0.7f / (player.height - distance.Length()) : 0.7f;
-                                        if (Main.rand.NextFloat() < dustChance)
+                                        dustChance = Utils.Clamp(dustChance * ((11f - grabbedItems) / 10f), 0f, 0.7f);
+                                        if (Main.rand.NextFloat() < dustChance - 0.02f)
                                         {
                                             Dust dust = Main.dust[Dust.NewDust(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];
                                             dust.noGravity = true;
