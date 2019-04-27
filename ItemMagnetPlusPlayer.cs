@@ -24,9 +24,10 @@ namespace ItemMagnetPlus
         private bool hadMagnetActive = false;
         public bool currentlyActive = false;
         //Debug variables
-        public int counter = 30;
-        public int clientcounter = 30;
+        //public int counter = 30;
+        //public int clientcounter = 30;
 
+        //not used yet
         private const string PENDING = "NOT RECEIVED FROM SERVER";
 
         public ClientConf clientConf = new ClientConf(0, 0, 0, 0, 0, PENDING);
@@ -425,7 +426,7 @@ namespace ItemMagnetPlus
                                     if (Main.netMode != NetmodeID.Server)
                                     {
                                         float dustChance = distance.Length() < player.height ? 0.7f / (player.height - distance.Length()) : 0.7f;
-                                        dustChance = Utils.Clamp(dustChance * ((11f - grabbedItems) / 10f), 0f, 0.7f);
+                                        dustChance = dustChance * ((11f - grabbedItems) / 10f);
                                         if (Main.rand.NextFloat() < dustChance - 0.02f)
                                         {
                                             Dust dust = Main.dust[Dust.NewDust(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];
