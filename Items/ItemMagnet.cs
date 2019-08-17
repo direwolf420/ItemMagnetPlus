@@ -117,19 +117,19 @@ namespace ItemMagnetPlus.Items
                     if(mPlayer.magnetActive == 0)
                     {
                         //nothing
-                        CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.DamagedFriendly, "magnet is off");
+                        CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, "magnet is off");
                     }
                     else if(player.HasBuff(mod.BuffType("ItemMagnetBuff")))
                     {
                         //shows the range
                         DrawRectangle(mPlayer, mPlayer.magnetGrabRadius * 16, CombatText.HealMana);
-                        CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.HealMana, "range:" + mPlayer.magnetGrabRadius);
+                        CombatText.NewText(player.getRect(), CombatText.HealMana, "range:" + mPlayer.magnetGrabRadius);
                     }
                     else
                     {
                         //deactivates
                         mPlayer.DeactivateMagnet(player);
-                        CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.DamagedFriendly, "magnet off");
+                        CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, "magnet off");
                     }
                 }
                 else //if (player.altFunctionUse != 2)
@@ -158,7 +158,7 @@ namespace ItemMagnetPlus.Items
                             ranges += "| next:" + (radius + divider);
                         }
                         
-                        CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.HealLife, ranges);
+                        CombatText.NewText(player.getRect(), CombatText.HealLife, ranges);
                     }
                     else
                     {
@@ -166,7 +166,7 @@ namespace ItemMagnetPlus.Items
 
                         if (radius > mPlayer.magnetMaxGrabRadius)
                         {
-                            CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), CombatText.DamagedFriendly, "magnet off");
+                            CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, "magnet off");
                             Main.PlaySound(SoundID.MaxMana, player.position, 1);
                             mPlayer.DeactivateMagnet(player);
                             return true;
@@ -185,7 +185,7 @@ namespace ItemMagnetPlus.Items
                         {
                             ranges += "| next:" + (radius + divider);
                         }
-                        CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), new Color(128, 255, 128), ranges);
+                        CombatText.NewText(player.getRect(), new Color(128, 255, 128), ranges);
                     }
                 }
             }

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using ItemMagnetPlus.Items;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ItemMagnetPlus
@@ -177,22 +174,22 @@ namespace ItemMagnetPlus
             {
                 if (lowerCaseDistinct[i] == "heart")
                 {
-                    typeBlacklist[++j] = 58;
-                    typeBlacklist[++j] = 1734;
-                    typeBlacklist[++j] = 1867;
+                    typeBlacklist[++j] = ItemID.Heart;
+                    typeBlacklist[++j] = ItemID.CandyApple;
+                    typeBlacklist[++j] = ItemID.CandyCane;
                 }
                 if (lowerCaseDistinct[i] == "mana")
                 {
-                    typeBlacklist[++j] = 184;
-                    typeBlacklist[++j] = 1735;
-                    typeBlacklist[++j] = 1868;
+                    typeBlacklist[++j] = ItemID.Star;
+                    typeBlacklist[++j] = ItemID.SoulCake;
+                    typeBlacklist[++j] = ItemID.SugarPlum;
                 }
                 if (lowerCaseDistinct[i] == "coin")
                 {
-                    typeBlacklist[++j] = 330;
-                    typeBlacklist[++j] = 331;
-                    typeBlacklist[++j] = 332;
-                    typeBlacklist[++j] = 333;
+                    typeBlacklist[++j] = ItemID.CopperCoin;
+                    typeBlacklist[++j] = ItemID.SilverCoin;
+                    typeBlacklist[++j] = ItemID.GoldCoin;
+                    typeBlacklist[++j] = ItemID.PlatinumCoin;
                 }
             }
             //if no things added to the list then return empty list
@@ -405,7 +402,9 @@ namespace ItemMagnetPlus
                         {
                             //if (player.inventory[player.selectedItem].type != 0 || player.itemAnimation <= 0)
                             //{
-                                if (Array.BinarySearch(magnetBlacklist, item.type) < 0)
+                            //if (Array.BinarySearch(magnetBlacklist, item.type) < 0)
+                            //{
+                                if (ConfigWrapper.CanBePulled(item.type))
                                 {
                                     grabbedItems++;
                                     //so it can go through walls
@@ -431,7 +430,7 @@ namespace ItemMagnetPlus
                                     if (Main.netMode != NetmodeID.Server)
                                     {
                                         float dustChance = distance.Length() < player.height ? 0.7f / (player.height - distance.Length()) : 0.7f;
-                                        dustChance = dustChance * ((11f - grabbedItems) / 10f);
+                                        dustChance *= (11f - grabbedItems) / 10f;
                                         if (Main.rand.NextFloat() < dustChance - 0.02f)
                                         {
                                             Dust dust = Main.dust[Dust.NewDust(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];

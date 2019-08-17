@@ -47,6 +47,8 @@ Progression: (default config)
 
 Changelog:
 
+ v0.2: Updated to ingame config, fixed coin filter
+
  v0.1.11: Added config flag to have the magnet work either from inside the inventory or only when held
 
  v0.1.10: Scale spark rate on pulled items, fixed some desync bugs in MP, fixed grab bags being pulled in by all players

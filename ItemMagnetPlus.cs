@@ -10,6 +10,7 @@ namespace ItemMagnetPlus
         public override void Load()
         {
             ModConf.Load();
+            ConfigWrapper.Load();
         }
 
         //Mod Helpers compat
