@@ -13,6 +13,11 @@ namespace ItemMagnetPlus
             ConfigWrapper.Load();
         }
 
+        public override void Unload()
+        {
+            ConfigWrapper.Unload();
+        }
+
         //Mod Helpers compat
         public static string GithubUserName { get { return "direwolf420"; } }
         public static string GithubProjectName { get { return "ItemMagnetPlus"; } }

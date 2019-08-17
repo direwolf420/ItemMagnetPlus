@@ -11,7 +11,7 @@ namespace ItemMagnetPlus
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-        //Automatically assigned by tmodloader
+        // Automatically assigned by tmodloader
         public static Config Instance;
 
         //-------------
@@ -19,17 +19,17 @@ namespace ItemMagnetPlus
         [Header("Preset Item Blacklist")]
         [Label("[i:58] Hearts")]
         [Tooltip("Toggle if hearts should be picked up by the magnet")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool Hearts;
 
         [Label("[i:184] Mana Stars")]
         [Tooltip("Toggle if mana stars should be picked up by the magnet")]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool ManaStars;
 
         [Label("[i:73] Coins")]
         [Tooltip("Toggle if coins should be picked up by the magnet")]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool Coins;
 
         //-------------
@@ -69,23 +69,23 @@ namespace ItemMagnetPlus
     {
         public static Config Instance;
 
-        public static int[] HeartTypes = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
+        public static int[] HeartTypes;
 
-        public static int[] ManaStarTypes = new int[] { ItemID.Star, ItemID.SoulCake, ItemID.SugarPlum };
+        public static int[] ManaStarTypes;
 
-        public static int[] CoinTypes = new int[] { ItemID.CopperCoin, ItemID.SilverCoin, ItemID.GoldCoin, ItemID.PlatinumCoin };
+        public static int[] CoinTypes;
 
-        public static bool CheckIfItemIsInPresetBlacklist(int type)
+        private static bool CheckIfItemIsInPresetBlacklist(int type)
         {
-            if (!Instance.Hearts && Array.BinarySearch(HeartTypes, type) > -1)
+            if (Instance.Hearts && Array.BinarySearch(HeartTypes, type) > -1)
             {
                 return true;
             }
-            if (!Instance.ManaStars && Array.BinarySearch(ManaStarTypes, type) > -1)
+            if (Instance.ManaStars && Array.BinarySearch(ManaStarTypes, type) > -1)
             {
                 return true;
             }
-            if (!Instance.Coins && Array.BinarySearch(CoinTypes, type) > -1)
+            if (Instance.Coins && Array.BinarySearch(CoinTypes, type) > -1)
             {
                 return true;
             }
@@ -94,31 +94,39 @@ namespace ItemMagnetPlus
 
         public static bool CanBePulled(int type)
         {
+            bool can = !CheckIfItemIsInPresetBlacklist(type);
             ItemDefinition item = new ItemDefinition(type);
             if (Instance.ListMode == "Blacklist")
             {
                 if (Instance.Blacklist.Contains(item))
                 {
-                    return false;
+                    can = false;
                 }
             }
             else if (Instance.ListMode == "Whitelist")
             {
-                if (!Instance.Whitelist.Contains(item))
-                {
-                    return false;
-                }
+                can = Instance.Whitelist.Contains(item);
             }
-            return !CheckIfItemIsInPresetBlacklist(type);
+            return can;
         }
 
         public static void Load()
         {
-            //will be nulled automatically by tmodloader
             Instance = Config.Instance;
+            HeartTypes = new int[] { ItemID.Heart, ItemID.CandyApple, ItemID.CandyCane };
+            ManaStarTypes = new int[] { ItemID.Star, ItemID.SoulCake, ItemID.SugarPlum };
+            CoinTypes = new int[] { ItemID.CopperCoin, ItemID.SilverCoin, ItemID.GoldCoin, ItemID.PlatinumCoin };
             Array.Sort(HeartTypes);
             Array.Sort(ManaStarTypes);
             Array.Sort(CoinTypes);
+        }
+
+        public static void Unload()
+        {
+            Instance = null;
+            HeartTypes = null;
+            ManaStarTypes = null;
+            CoinTypes = null;
         }
     }
 }
