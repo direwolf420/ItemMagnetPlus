@@ -64,7 +64,7 @@ namespace ItemMagnetPlus.Items
         public static Dust QuickDust(Vector2 pos, Color color)
         {
             int type = 1;
-            Dust dust = Main.dust[Dust.NewDust(pos, 4, 4, type, 0f, 0f, 120, color, 2f)];
+            Dust dust = Dust.NewDustDirect(pos, 4, 4, type, 0f, 0f, 120, color, 2f);
             dust.position = pos;
             dust.velocity = Vector2.Zero;
             dust.fadeIn = 3f;
@@ -86,7 +86,7 @@ namespace ItemMagnetPlus.Items
         private void DrawRectangle(ItemMagnetPlusPlayer mPlayer, int radius, Color color)
         {
             int stage = radius / (mPlayer.magnetScreenRadius * 16);
-            radius = radius - mPlayer.magnetScreenRadius * 16 * stage;
+            radius -= mPlayer.magnetScreenRadius * 16 * stage;
             float fullhdradius = radius * 0.5625f;
             color = new Color(color.R + stage * 30, color.G, color.B - stage * 30);
 
