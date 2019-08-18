@@ -25,39 +25,6 @@ namespace ItemMagnetPlus
         //public int counter = 30;
         //public int clientcounter = 30;
 
-        //not used yet
-        private const string PENDING = "NOT RECEIVED FROM SERVER";
-
-        public ClientConf clientConf = new ClientConf(0, 0, 0, 0, 0, PENDING, 0);
-
-        public struct ClientConf
-        {
-            public int Range, Scale, Velocity, Acceleration, Buff, Held;
-            public string Filter;
-
-            public ClientConf(int p1, int p2, int p3, int p4, int p5, string p6, int p7)
-            {
-                Range = p1;
-                Scale = p2;
-                Velocity = p3;
-                Acceleration = p4;
-                Buff = p5;
-                Filter = p6;
-                Held = p7;
-            }
-
-            public override string ToString()
-            {
-                return "R: " + Range +
-                    ", S: " + Scale +
-                    ", V: " + Velocity +
-                    ", A: " + Acceleration +
-                    ", B: " + Buff +
-                    ", F: '" + Filter + "'" +
-                    ", H: " + Held;
-            }
-        }
-
         public override void ResetEffects()
         {
             if (Config.Instance.Buff)
@@ -109,16 +76,6 @@ namespace ItemMagnetPlus
             ModPacket packet = mod.GetPacket();
             packet.Write((byte)IMPMessageType.SyncPlayer);
             packet.Write((byte)player.whoAmI);
-            packet.Write((int)ModConf.Range);
-            packet.Write((byte)ModConf.Scale);
-            packet.Write((int)ModConf.Velocity);
-            packet.Write((byte)ModConf.Acceleration);
-            packet.Write((byte)1); //ModConf.Buff      //enforce buff in MP
-            packet.Write((string)ModConf.Filter);
-            packet.Write((byte)ModConf.Held);
-            player.GetModPlayer<ItemMagnetPlusPlayer>().clientConf = new ClientConf(ModConf.Range, ModConf.Scale, ModConf.Velocity, ModConf.Acceleration, 1, ModConf.Filter, ModConf.Held);
-            player.GetModPlayer<ItemMagnetPlusPlayer>().MagnetBlacklist();
-
             //in addition to sending the server config, send all info about the players
 
             byte[] indexes = new byte[255];
@@ -153,56 +110,6 @@ namespace ItemMagnetPlus
             packet.Send(toWho/*, fromWho*/);
         }
 
-        public void MagnetBlacklist()
-        {
-            //list of item types to ignore
-            int[] typeBlacklist = new int[20];
-            if (clientConf.Filter == "")
-            {
-                magnetBlacklist = typeBlacklist;
-                return;
-            }
-            string[] stringBlacklist = clientConf.Filter.Split(new string[] { "," }, 50, StringSplitOptions.RemoveEmptyEntries);
-            string[] lowerCase = new string[stringBlacklist.Length];
-            for (int i = 0; i < stringBlacklist.Length; i++)
-            {
-                lowerCase[i] = stringBlacklist[i].Trim();
-            }
-            string[] lowerCaseDistinct = lowerCase.Distinct().ToArray();
-            int j = -1;
-            for (int i = 0; i < lowerCaseDistinct.Length; i++)
-            {
-                if (lowerCaseDistinct[i] == "heart")
-                {
-                    typeBlacklist[++j] = ItemID.Heart;
-                    typeBlacklist[++j] = ItemID.CandyApple;
-                    typeBlacklist[++j] = ItemID.CandyCane;
-                }
-                if (lowerCaseDistinct[i] == "mana")
-                {
-                    typeBlacklist[++j] = ItemID.Star;
-                    typeBlacklist[++j] = ItemID.SoulCake;
-                    typeBlacklist[++j] = ItemID.SugarPlum;
-                }
-                if (lowerCaseDistinct[i] == "coin")
-                {
-                    typeBlacklist[++j] = ItemID.CopperCoin;
-                    typeBlacklist[++j] = ItemID.SilverCoin;
-                    typeBlacklist[++j] = ItemID.GoldCoin;
-                    typeBlacklist[++j] = ItemID.PlatinumCoin;
-                }
-            }
-            //if no things added to the list then return empty list
-            if (j < 0)
-            {
-                magnetBlacklist = typeBlacklist;
-                return;
-            }
-            Array.Resize(ref typeBlacklist, j + 1);
-            Array.Sort(typeBlacklist, 0, typeBlacklist.Length - 1);
-            magnetBlacklist = typeBlacklist;
-        }
-
         public void ActivateMagnet(Player player)
         {
             if (!Config.Instance.Buff)
@@ -226,12 +133,7 @@ namespace ItemMagnetPlus
 
         public override void OnEnterWorld(Player player)
         {
-            if (Main.netMode == NetmodeID.SinglePlayer)
-            {
-                clientConf = new ClientConf(ModConf.Range, ModConf.Scale, ModConf.Velocity, ModConf.Acceleration, ModConf.Buff, ModConf.Filter, ModConf.Held);
-                MagnetBlacklist();
-            }
-            else if (Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 SendClientChangesPacket();
             }

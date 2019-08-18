@@ -9,7 +9,6 @@ namespace ItemMagnetPlus
     {
         public override void Load()
         {
-            ModConf.Load();
             ConfigWrapper.Load();
         }
 
@@ -27,12 +26,6 @@ namespace ItemMagnetPlus
             IMPMessageType msgType = (IMPMessageType)reader.ReadByte();
             byte playernumber;
             int range;
-            byte scale;
-            int velocity;
-            byte acceleration;
-            byte buff;
-            string filter;
-            byte held;
 
             byte arrayLength;
 
@@ -45,19 +38,7 @@ namespace ItemMagnetPlus
                 case IMPMessageType.SyncPlayer:
                     if(Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        playernumber = reader.ReadByte();  //byte
-                        range = reader.ReadInt32();        //int
-                        scale = reader.ReadByte();         //byte
-                        velocity = reader.ReadInt32();     //int
-                        acceleration = reader.ReadByte();  //byte
-                        buff = reader.ReadByte();          //byte
-                        filter = reader.ReadString();      //string
-                        held = reader.ReadByte();          //byte
-                        mPlayer = Main.player[playernumber].GetModPlayer<ItemMagnetPlusPlayer>();
-                        mPlayer.clientConf = new ItemMagnetPlusPlayer.ClientConf(range, scale, velocity, acceleration, buff, filter, held);
-                        mPlayer.MagnetBlacklist();
-
-                        //in addition to recieving the server config, get all info about the players
+                        // Get all info about the players
 
                         arrayLength = reader.ReadByte();
                         if (arrayLength > 0)
