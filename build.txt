@@ -1,7 +1,7 @@
 author = direwolf420
-version = 0.1.11
+version = 1.0
 displayName = ItemMagnetPlus
 homepage = https://forums.terraria.org/index.php?threads/itemmagnetplus-customizable-item-magnet.74425/
 hideCode = true
 hideResources = true
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, banner.png
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, banner.png, Properties\*

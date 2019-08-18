@@ -2,19 +2,19 @@ ItemMagnetPlus adds a single item called "Item Magnet" that does the obvious thi
 
 Adds:
 Item Magnet (and corresponding buff) that
-* can be crafted with simple materials (Iron/Lead)
-* works while in your inventory (doesn't waste an accessory slot)
+* can be crafted with simple materials
+* works while in your inventory
 * can be toggled on and off
 * has adjustable range and item succ speed
 * has increased stats after killing bosses
-* customizable via config (\Documents\My Games\Terraria\ModLoader\Mod Configs) to fit your playstyle
+* customizable via config (\Documents\My Games\Terraria\ModLoader\Mod Configs\ItemMagnetPlus_Config) to fit your playstyle
 
 How to use:
 * Left click cycles through its ranges
 * Right click shows current range (you can always check the stats on the buff tooltip)
-* This right click functionality changes to "turn off" when "buff" flag in the config is set to 0
+* This right click functionality changes to "turn off" when "Buff" in the config is false
 * Killing bosses improves its stats
-* If you want it to either be off or on, there is a config entry called "scale", set it to 0 or 2
+* If you want it to either be on or off, change "Scale" in the config to anything but "Increase With Bosses"
 
 Multiplayer:
 * This mod is multiplayer compatible, the config is entirely server side, but the buff flag is forced to 1
@@ -26,7 +26,7 @@ Multiplayer:
 
 Progression: (default config)
  Starts with:
- Range = 10 (Blocks in each direction)
+ Range = 10 (blocks in each direction)
  Velocity = 8
  Acceleration = 8
 
@@ -37,17 +37,16 @@ Progression: (default config)
 
  About the config:
 * Buff decides if it gives you a corresponding buff icon to show the status of the magnet
-* OnlyWhenHeld decides if the magnet works only when held (buff icon, if enabled, will still show even if not held)
-* Filter decides what to ignore when using the magnet (only hearts, mana stars and coins supported for now)
-* Range starts from 10, but can be as big as you want
+* Held decides if the magnet works only when held
+* Filter function: Presets (hearts, mana stars, coins), blacklist/whitelist
+* Magnet stats are limited to sensible values (Range only goes up to about three screens in any direction)
 * If you increase Vel or Acc too much from those recommended above, items might get "stuck" on you until you deactivate it again
 * Beware of lag when increasing these values, especially range
 * If the difference between velocity and acceleration is too big, items will go in circles around you or get stuck until you deactivate it
-* If you change the version number, your config might get reset, so don't touch it 
 
 Changelog:
 
- v0.2: Updated to ingame config, fixed coin filter
+ v1.0: tml 0.11.4 update. Updated to ingame config, fixed coin filter, added custom black/whitelist
 
  v0.1.11: Added config flag to have the magnet work either from inside the inventory or only when held
 

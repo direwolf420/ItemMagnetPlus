@@ -12,12 +12,12 @@ namespace ItemMagnetPlus
     {
         public int magnetActive = 0;
         public int magnetScreenRadius = 60 + 1;
-        public int magnetGrabRadius = 10;
-        public int magnetMinGrabRadius = 10;
-        public int magnetMaxGrabRadius = 10; //60 half a screen radius
-        public int magnetScale = 1;
-        public int magnetVelocity = 8;
-        public int magnetAcceleration = 8;
+        public int magnetGrabRadius = Config.RangeMin;
+        public int magnetMinGrabRadius = Config.RangeMin;
+        public int magnetMaxGrabRadius = Config.RangeMin; //60 half a screen radius
+        public string magnetScale = Config.ScaleModeBosses;
+        public int magnetVelocity = Config.VelocityMin;
+        public int magnetAcceleration = Config.AccelerationMin;
         public int[] magnetBlacklist; //only populated when player joins the world, not changed during gameplay
         private bool hadMagnetActive = false;
         public bool currentlyActive = false;
@@ -60,16 +60,16 @@ namespace ItemMagnetPlus
 
         public override void ResetEffects()
         {
-            if (clientConf.Buff == 1)
+            if (Config.Instance.Buff)
             {
                 magnetActive = 0;
             }
             //these are changed by config
             //starting values
-            magnetMaxGrabRadius = 10;
-            magnetScale = 1;
-            magnetVelocity = 8;
-            magnetAcceleration = 8;
+            magnetMaxGrabRadius = Config.RangeMin;
+            magnetScale = Config.ScaleModeBosses;
+            magnetVelocity = Config.VelocityMin;
+            magnetAcceleration = Config.AccelerationMin;
         }
 
         public override void clientClone(ModPlayer clientClone)
@@ -205,7 +205,7 @@ namespace ItemMagnetPlus
 
         public void ActivateMagnet(Player player)
         {
-            if (clientConf.Buff != 1)
+            if (!Config.Instance.Buff)
             {
                 magnetActive = 1;
             }
@@ -217,11 +217,11 @@ namespace ItemMagnetPlus
 
         public void DeactivateMagnet(Player player)
         {
-            player.ClearBuff(mod.BuffType("ItemMagnetBuff"));
-            if (clientConf.Buff != 1)
+            if (!Config.Instance.Buff)
             {
                 magnetActive = 0;
             }
+            player.ClearBuff(mod.BuffType("ItemMagnetBuff"));
         }
 
         public override void OnEnterWorld(Player player)
@@ -262,12 +262,12 @@ namespace ItemMagnetPlus
         public void UpdateMagnetValues(int currentRadius)
         {
             //currentRadius is for creating steps between min and max range, and setting it accordingly
-            magnetMaxGrabRadius = clientConf.Range;
-            magnetScale = clientConf.Scale;
-            magnetVelocity = clientConf.Velocity;
-            magnetAcceleration = clientConf.Acceleration;
+            magnetMaxGrabRadius = Config.Instance.Range;
+            magnetScale = Config.Instance.Scale;
+            magnetVelocity = Config.Instance.Velocity;
+            magnetAcceleration = Config.Instance.Acceleration;
 
-            if (magnetScale == 2)
+            if (magnetScale == Config.ScaleModeOnlyConfig)
             {
                 magnetGrabRadius = magnetMaxGrabRadius;
                 return;
@@ -354,7 +354,7 @@ namespace ItemMagnetPlus
                 //magnetAcceleration = 32;
             }
 
-            if (magnetScale == 0)
+            if (magnetScale != Config.ScaleModeBosses)
             {
                 magnetGrabRadius = magnetMaxGrabRadius;
                 return;
@@ -373,14 +373,14 @@ namespace ItemMagnetPlus
         public override void PreUpdate()
         {
             //doing this only client side causes a small "lag" when the item first gets dragged toward the player
-            currentlyActive = (clientConf.Buff == 1) ? player.HasBuff(mod.BuffType("ItemMagnetBuff")) : magnetActive == 1;
-            bool whileHeld = (clientConf.Held == 1) ? player.HeldItem.type == mod.ItemType("ItemMagnet") : true;
+            currentlyActive = Config.Instance.Buff ? player.HasBuff(mod.BuffType("ItemMagnetBuff")) : magnetActive == 1;
+            bool whileHeld = Config.Instance.Held ? player.HeldItem.type == mod.ItemType("ItemMagnet") : true;
 
             if (currentlyActive && !player.dead && whileHeld)
             {
                 UpdateMagnetValues(magnetGrabRadius);
 
-                int grabRadius = (int)(magnetGrabRadius * 16); //16 == to world coordinates
+                int grabRadius = magnetGrabRadius * 16; //16 == to world coordinates
                 int fullhdgrabRadius = (int)(grabRadius * 0.5625f);
 
                 int grabbedItems = 0;
@@ -425,7 +425,7 @@ namespace ItemMagnetPlus
                                     if (magnetAcceleration > 40) magnetAcceleration = 40;
                                     int accel = -(magnetAcceleration - 41); //20 ideal
 
-                                    item.velocity = (item.velocity * (float)(accel - 1) + normalizedDistance) / (float)accel;
+                                    item.velocity = (item.velocity * (accel - 1) + normalizedDistance) / (float)accel;
 
                                     if (Main.netMode != NetmodeID.Server)
                                     {
@@ -433,7 +433,7 @@ namespace ItemMagnetPlus
                                         dustChance *= (11f - grabbedItems) / 10f;
                                         if (Main.rand.NextFloat() < dustChance - 0.02f)
                                         {
-                                            Dust dust = Main.dust[Dust.NewDust(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f)];
+                                            Dust dust = Dust.NewDustDirect(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f);
                                             dust.noGravity = true;
                                             dust.noLight = true;
                                         }

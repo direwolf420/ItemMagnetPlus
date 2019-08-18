@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +16,6 @@ namespace ItemMagnetPlus
         // Automatically assigned by tmodloader
         public static Config Instance;
 
-        // Limits
         public const int RangeMin = 10;
         public const int RangeMax = 240;
         public const int VelocityMin = 1;
@@ -28,12 +26,11 @@ namespace ItemMagnetPlus
         public const string BlacklistName = "Blacklist";
         public const string WhitelistName = "Whitelist";
 
-        public const string ScaleModeBosses = "Scale With Bosses";
-        public const string ScaleModeAlwaysMaxRange = "Always Max Range";
-        public const string ScaleModeOnlyConfig = "Only Custom Config";
+        public const string ScaleModeBosses = "Increase With Bosses";
+        public const string ScaleModeAlwaysMaxRange = "Bosses + Max Range";
+        public const string ScaleModeOnlyConfig = "Custom + Max Range";
 
         //-------------
-        [SeparatePage]
         [Header("Preset Item Blacklist")]
 
         [Label("[i:58] Hearts")]
@@ -52,7 +49,6 @@ namespace ItemMagnetPlus
         public bool Coins;
 
         //-------------
-        [SeparatePage]
         [Header("Custom Item Filter")]
 
         [Label("Magnet Blacklist")]
@@ -72,14 +68,25 @@ namespace ItemMagnetPlus
         [DefaultValue(BlacklistName)]
         public string ListMode;
 
+        //-------------
+        [Header("General")]
+        [Label("Buff")]
+        [Tooltip("Toggle if having the magnet active gives you a buff")]
+        [DefaultValue(true)]
+        public bool Buff;
+
+        [Label("Held")]
+        [Tooltip("Toggle if magnet should only work when you hold it (instead of being in the inventory)")]
+        [DefaultValue(false)]
+        public bool Held;
 
         //-------------
-        [SeparatePage]
         [Header("Magnet Behavior (Only works ingame)")]
 
         //[Label("Range")]
         [Tooltip("Base magnet radius in tiles")]
         [Slider]
+        [SliderColor(180, 255, 180)]
         [Range(RangeMin, RangeMax)]
         [Increment(5)]
         [DefaultValue(10)]
@@ -88,6 +95,7 @@ namespace ItemMagnetPlus
         //[Label("Velocity")]
         [Tooltip("Speed at which items get pulled towards you")]
         [Slider]
+        [SliderColor(180, 255, 180)]
         [Range(VelocityMin, VelocityMax)]
         [DefaultValue(8)]
         public int Velocity;
@@ -95,6 +103,7 @@ namespace ItemMagnetPlus
         //[Label("Acceleration")]
         [Tooltip("How fast an item reaches its peak speed")]
         [Slider]
+        [SliderColor(180, 255, 180)]
         [Range(AccelerationMin, AccelerationMax)]
         [DefaultValue(8)]
         public int Acceleration;
@@ -106,6 +115,7 @@ namespace ItemMagnetPlus
         [DefaultValue(ScaleModeBosses)]
         public string Scale;
 
+        //-------------
         [Header("Resulting Magnet stats")]
         [Label("Resulting Max Range")]
         [Slider]
@@ -162,9 +172,10 @@ namespace ItemMagnetPlus
             if (ListMode != BlacklistName && ListMode != WhitelistName) ListMode = BlacklistName;
             if (Scale != ScaleModeBosses && Scale != ScaleModeAlwaysMaxRange && Scale != ScaleModeOnlyConfig) Scale = ScaleModeBosses;
             // Clamp
-            Range = Range < RangeMin ? RangeMin : (Range > RangeMax ? RangeMax : Range);
-            Velocity = Velocity < VelocityMin ? VelocityMin : (Velocity > VelocityMax ? VelocityMax : Velocity);
-            Acceleration = Acceleration < AccelerationMin ? AccelerationMin : (Acceleration > AccelerationMax ? AccelerationMax : Acceleration);
+            Clamp(ref Range, RangeMin, RangeMax);
+            Clamp(ref Velocity, VelocityMin, VelocityMax);
+            Clamp(ref Acceleration, AccelerationMin, AccelerationMax);
+            if (Main.netMode == NetmodeID.Server) Buff = true; // Enforce buff in multiplayer
         }
 
         // This is stupid don't do this
@@ -173,6 +184,7 @@ namespace ItemMagnetPlus
             int a = 0;
             int b = 0;
             Update(Scale, ref range, ref a, ref b);
+            Clamp(ref range, RangeMin, RangeMax + 110);
         }
 
         public void UpdateVelocity(ref int velocity)
@@ -180,7 +192,7 @@ namespace ItemMagnetPlus
             int a = 0;
             int b = 0;
             Update(Scale, ref a, ref velocity, ref b);
-            velocity = velocity < VelocityMin ? VelocityMin : (velocity > VelocityMax ? VelocityMax : velocity);
+            Clamp(ref velocity, VelocityMin, VelocityMax);
         }
 
         public void UpdateAcceleration(ref int acceleration)
@@ -188,7 +200,12 @@ namespace ItemMagnetPlus
             int a = 0;
             int b = 0;
             Update(Scale, ref a, ref b, ref acceleration);
-            acceleration = acceleration < AccelerationMin ? AccelerationMin : (acceleration > AccelerationMax ? AccelerationMax : acceleration);
+            Clamp(ref acceleration, AccelerationMin, AccelerationMax);
+        }
+
+        private void Clamp(ref int value, int min, int max)
+        {
+            value = value < min ? min : (value > max ? max : value);
         }
 
         public void Update(string scale, ref int range, ref int velocity, ref int acceleration)

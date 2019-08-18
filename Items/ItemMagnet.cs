@@ -28,8 +28,11 @@ namespace ItemMagnetPlus.Items
         {
             ItemMagnetPlusPlayer mPlayer = Main.LocalPlayer.GetModPlayer<ItemMagnetPlusPlayer>(mod);
 
-            tooltips.Add(new TooltipLine(mod, "Buffa", "Left Click to " + ((mPlayer.clientConf.Scale == 1) ? "[c/80FF80:change range ]" : "[c/80FF80:toggle on/off ]")));
-            tooltips.Add(new TooltipLine(mod, "Buffb", "Right Click to " + ((mPlayer.clientConf.Buff == 1) ? "[c/9999FF:show current range ]" : "[c/FF8080:turn off ]")));
+            string color1 = (new Color(128, 255, 128) * (Main.mouseTextColor / 255f)).Hex3();
+            string color2 = (new Color(159, 159, 255) * (Main.mouseTextColor / 255f)).Hex3();
+            string color3 = (new Color(255, 128, 128) * (Main.mouseTextColor / 255f)).Hex3();
+            tooltips.Add(new TooltipLine(mod, "Buffa", "Left Click to " + (Config.Instance.Scale == Config.ScaleModeBosses ? "[c/" + color1 + ":change range ]" : "[c/" + color1 + ":toggle on/off ]")));
+            tooltips.Add(new TooltipLine(mod, "Buffb", "Right Click to " + (Config.Instance.Buff ? "[c/" + color2 + ":show current range ]" : "[c/" + color3 + ":turn off ]")));
 
             if (Main.LocalPlayer.HasBuff(mod.BuffType("ItemMagnetBuff")) || Main.LocalPlayer.GetModPlayer<ItemMagnetPlusPlayer>(mod).magnetActive == 1)
             {
@@ -48,7 +51,6 @@ namespace ItemMagnetPlus.Items
 
         public override void AddRecipes()
         {
-            //iron/lead
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddRecipeGroup("IronBar", 12);
             recipe.AddTile(TileID.Anvils);
@@ -83,19 +85,19 @@ namespace ItemMagnetPlus.Items
             }
         }
 
-        private void DrawRectangle(ItemMagnetPlusPlayer mPlayer, int radius, Color color)
+        private void DrawRectangle(Player player, int radius, Color color)
         {
-            int stage = radius / (mPlayer.magnetScreenRadius * 16);
-            radius -= mPlayer.magnetScreenRadius * 16 * stage;
+            //int stage = radius / (mPlayer.magnetScreenRadius * 16);
+            //radius -= mPlayer.magnetScreenRadius * 16 * stage;
+            //color = new Color(color.R + stage * 30, color.G, color.B - stage * 30);
             float fullhdradius = radius * 0.5625f;
-            color = new Color(color.R + stage * 30, color.G, color.B - stage * 30);
 
             //before: radius in world coordinates
-            Vector2 pos = mPlayer.player.position;
+            Vector2 pos = player.position;
             float leftx = pos.X - radius;
             float topy = pos.Y - fullhdradius;
-            float rightx = leftx + mPlayer.player.width + radius * 2;
-            float boty = topy + mPlayer.player.height + fullhdradius * 2;
+            float rightx = leftx + player.width + radius * 2;
+            float boty = topy + player.height + fullhdradius * 2;
 
             //after radius in tile coordinates
             QuickDustLine(new Vector2(leftx, topy), new Vector2(rightx, topy), radius / 16f, color); //clock wise starting top left
@@ -119,10 +121,10 @@ namespace ItemMagnetPlus.Items
                         //nothing
                         CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, "magnet is off");
                     }
-                    else if(player.HasBuff(mod.BuffType("ItemMagnetBuff")))
+                    else if(Config.Instance.Buff && player.HasBuff(mod.BuffType("ItemMagnetBuff")))
                     {
                         //shows the range
-                        DrawRectangle(mPlayer, mPlayer.magnetGrabRadius * 16, CombatText.HealMana);
+                        DrawRectangle(player, mPlayer.magnetGrabRadius * 16, CombatText.HealMana);
                         CombatText.NewText(player.getRect(), CombatText.HealMana, "range:" + mPlayer.magnetGrabRadius);
                     }
                     else
@@ -146,7 +148,7 @@ namespace ItemMagnetPlus.Items
                         mPlayer.UpdateMagnetValues(mPlayer.magnetMinGrabRadius);
                         radius = mPlayer.magnetGrabRadius;
                         divider = (Main.hardMode || mPlayer.magnetGrabRadius >= mPlayer.magnetScreenRadius) ? 10 : 5; //duplicate because need updated value
-                        DrawRectangle(mPlayer, mPlayer.magnetGrabRadius * 16, new Color(200, 255, 200));
+                        DrawRectangle(player, mPlayer.magnetGrabRadius * 16, new Color(200, 255, 200));
 
                         string ranges = "range:" + radius;
                         if (radius + divider > mPlayer.magnetMaxGrabRadius)
@@ -173,7 +175,7 @@ namespace ItemMagnetPlus.Items
                         }
 
                         mPlayer.UpdateMagnetValues(radius);
-                        DrawRectangle(mPlayer, mPlayer.magnetGrabRadius * 16, new Color(200, 255, 200));
+                        DrawRectangle(player, mPlayer.magnetGrabRadius * 16, new Color(200, 255, 200));
 
                         //here radius is already + divider
                         string ranges = "range:" + radius;
