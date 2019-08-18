@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -293,81 +292,73 @@ namespace ItemMagnetPlus
                     if (item.active && item.noGrabDelay == 0 && !ItemLoader.GrabStyle(item, player) && ItemLoader.CanPickup(item, player) /*&& Main.player[item.owner].ItemSpace(item)*/)
                     {
                         bool canGrabNetMode = true;
+                        //All: item.ownIgnore == -1 && item.keepTime == 0
+                        //Client: (above) && item.owner != 255 
                         if (Main.netMode != NetmodeID.SinglePlayer)
                         {
-                            canGrabNetMode = item.owner == 255 || item.owner == player.whoAmI;
-                            //canGrabNetMode &= !item.instanced;
+                            if (item.instanced) canGrabNetMode &= item.owner == player.whoAmI;
                         }
 
                         Rectangle rect = new Rectangle((int)player.position.X - grabRadius, (int)player.position.Y - fullhdgrabRadius, player.width + grabRadius * 2, player.height + fullhdgrabRadius * 2);
                         if (canGrabNetMode && rect.Intersects(item.getRect()))
                         {
-                            //if (player.inventory[player.selectedItem].type != 0 || player.itemAnimation <= 0)
-                            //{
-                            //if (Array.BinarySearch(magnetBlacklist, item.type) < 0)
-                            //{
-                                if (ConfigWrapper.CanBePulled(item.type))
+                            if (ConfigWrapper.CanBePulled(item.type))
+                            {
+                                grabbedItems++;
+                                //so it can go through walls
+                                item.beingGrabbed = true;
+                                //velocity, higher = more speed
+                                float velo = magnetVelocity; //16 ideal
+
+                                Vector2 distance = player.Center - item.Center;
+                                Vector2 normalizedDistance = distance;
+
+                                //adjustment term, increases velocity the closer to the player it is (0..2)
+                                velo += 2 * (1 - (normalizedDistance.Length() / grabRadius));
+
+                                normalizedDistance.Normalize();
+                                normalizedDistance *= velo;
+
+                                //acceleration, higher = more acceleration
+                                if (magnetAcceleration > 40) magnetAcceleration = 40;
+                                int accel = -(magnetAcceleration - 41); //20 ideal
+
+                                item.velocity = (item.velocity * (accel - 1) + normalizedDistance) / (float)accel;
+
+                                if (Main.netMode != NetmodeID.Server)
                                 {
-                                    grabbedItems++;
-                                    //so it can go through walls
-                                    item.beingGrabbed = true;
-                                    //velocity, higher = more speed
-                                    float velo = magnetVelocity; //16 ideal
-
-                                    Vector2 distance = player.Center - item.Center;
-                                    Vector2 normalizedDistance = distance;
-
-                                    //adjustment term, increases velocity the closer to the player it is (0..2)
-                                    velo += 2 * (1 - (normalizedDistance.Length() / grabRadius));
-
-                                    normalizedDistance.Normalize();
-                                    normalizedDistance *= velo;
-
-                                    //acceleration, higher = more acceleration
-                                    if (magnetAcceleration > 40) magnetAcceleration = 40;
-                                    int accel = -(magnetAcceleration - 41); //20 ideal
-
-                                    item.velocity = (item.velocity * (accel - 1) + normalizedDistance) / (float)accel;
-
-                                    if (Main.netMode != NetmodeID.Server)
+                                    float dustChance = distance.Length() < player.height ? 0.7f / (player.height - distance.Length()) : 0.7f;
+                                    dustChance *= (11f - grabbedItems) / 10f;
+                                    if (Main.rand.NextFloat() < dustChance - 0.02f)
                                     {
-                                        float dustChance = distance.Length() < player.height ? 0.7f / (player.height - distance.Length()) : 0.7f;
-                                        dustChance *= (11f - grabbedItems) / 10f;
-                                        if (Main.rand.NextFloat() < dustChance - 0.02f)
-                                        {
-                                            Dust dust = Dust.NewDustDirect(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f);
-                                            dust.noGravity = true;
-                                            dust.noLight = true;
-                                        }
+                                        Dust dust = Dust.NewDustDirect(item.position, item.width, item.height, 204, 0f, 0f, 0, new Color(255, 255, 255), 0.8f);
+                                        dust.noGravity = true;
+                                        dust.noLight = true;
                                     }
                                 }
-                            //}
+                            }
                         }
                     }
                 }
 
-                //if (Main.netMode == NetmodeID.Server)
+                //if (Main.time % 90 == 0)
                 //{
-                //    if (Main.time % 90 == 0)
+                //    if (Main.netMode == NetmodeID.Server)
                 //    {
-                //        //Console.WriteLine("im here " + Main.time);
-                //        //for (int i = 0; i < magnetBlacklist.Length; i++)
-                //        //{
-                //        //    Console.Write(magnetBlacklist[i] + ", ");
-                //        //}
-                //        //Console.WriteLine("test: " + magnetBlacklist.Length);
-                //        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("server: " + player.name + "currently trying to grab " + grabbedItems + " items"), new Color(255, 25, 25));
+                //            //Console.WriteLine("im here " + Main.time);
+                //            //for (int i = 0; i < magnetBlacklist.Length; i++)
+                //            //{
+                //            //    Console.Write(magnetBlacklist[i] + ", ");
+                //            //}
+                //            //Console.WriteLine("test: " + magnetBlacklist.Length);
+                //            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("server: " + player.name + " currently trying to grab " + grabbedItems + " items"), new Color(255, 25, 25));
+                //    }
+
+                //    if (Main.netMode == NetmodeID.MultiplayerClient)
+                //    {
+                //            Main.NewText("client: " + player.name + " currently trying to grab " + grabbedItems + " items");
                 //    }
                 //}
-
-                //if (Main.netMode == NetmodeID.MultiplayerClient)
-                //{
-                //    if (Main.time % 90 == 0)
-                //    {
-                //        Main.NewText("client: " + player.name + "currently trying to grab " + grabbedItems + " items");
-                //    }
-                //}
-
             }
 
             //if (Main.netMode == NetmodeID.Server)

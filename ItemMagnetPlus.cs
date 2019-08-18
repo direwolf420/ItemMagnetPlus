@@ -65,7 +65,6 @@ namespace ItemMagnetPlus
                     break;
                 case IMPMessageType.SendClientChanges:
                     playernumber = reader.ReadByte();
-                    
                     range = reader.ReadInt32();         //int
 
                     variousBooleans = reader.ReadByte();//byte
