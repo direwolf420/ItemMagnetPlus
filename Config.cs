@@ -86,7 +86,7 @@ namespace ItemMagnetPlus
         //[Label("Range")]
         [Tooltip("Base magnet radius in tiles")]
         [Slider]
-        [SliderColor(255, 255, 150)]
+        [SliderColor(255, 255, 50)]
         [Range(RangeMin, RangeMax)]
         [Increment(5)]
         [DefaultValue(10)]
@@ -95,7 +95,7 @@ namespace ItemMagnetPlus
         //[Label("Velocity")]
         [Tooltip("Speed at which items get pulled towards you")]
         [Slider]
-        [SliderColor(255, 255, 150)]
+        [SliderColor(255, 255, 50)]
         [Range(VelocityMin, VelocityMax)]
         [DefaultValue(8)]
         public int Velocity;
@@ -103,7 +103,7 @@ namespace ItemMagnetPlus
         //[Label("Acceleration")]
         [Tooltip("How fast an item reaches its peak speed")]
         [Slider]
-        [SliderColor(255, 255, 150)]
+        [SliderColor(255, 255, 50)]
         [Range(AccelerationMin, AccelerationMax)]
         [DefaultValue(8)]
         public int Acceleration;
@@ -111,16 +111,16 @@ namespace ItemMagnetPlus
         //[Label("Acceleration")]
         [Tooltip("Scaling Mode")]
         [DrawTicks]
-        [SliderColor(255, 255, 150)]
+        [SliderColor(255, 255, 50)]
         [OptionStrings(new string[] { ScaleModeBosses, ScaleModeAlwaysMaxRange, ScaleModeOnlyConfig })]
-        [DefaultValue(ScaleModeBosses)]
+        [DefaultValue(ScaleModeAlwaysMaxRange)]
         public string Scale;
 
         //-------------
         [Header("Resulting Magnet stats")]
         [Label("Resulting Max Range")]
         [Slider]
-        [SliderColor(180, 255, 150)]
+        [SliderColor(50, 255, 50)]
         [JsonIgnore]
         [Range(RangeMin, RangeMax + 110)]
         public int CurrentMaxRange
@@ -135,7 +135,7 @@ namespace ItemMagnetPlus
 
         [Label("Resulting Velocity")]
         [Slider]
-        [SliderColor(180, 255, 150)]
+        [SliderColor(50, 255, 50)]
         [JsonIgnore]
         [Range(VelocityMin, VelocityMax)]
         public int CurrentVelocity
@@ -150,7 +150,7 @@ namespace ItemMagnetPlus
 
         [Label("Resulting Acceleration")]
         [Slider]
-        [SliderColor(180, 255, 150)]
+        [SliderColor(50, 255, 50)]
         [JsonIgnore]
         [Range(AccelerationMin, AccelerationMax)]
         public int CurrentAcceleration
