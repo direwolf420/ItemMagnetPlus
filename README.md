@@ -13,8 +13,8 @@ Item Magnet (and corresponding buff) that
 * can be toggled on and off
 * has adjustable range and item succ speed
 * has increased stats after killing bosses
-* customizable via config (`\Documents\My Games\Terraria\ModLoader\Mod Configs\ItemMagnetPlus_Config`) to fit your playstyle
-* 
+* customizable via config ingame to fit your playstyle
+
 ### How to use:
 * Left click cycles through its ranges
 * Right click shows current range (you can always check the stats on the buff tooltip)
@@ -23,12 +23,12 @@ Item Magnet (and corresponding buff) that
 * If you want it to either be on or off, change "Scale" in the config to anything but "Increase With Bosses"
 
 ### Multiplayer:
-* This mod is multiplayer compatible, the config is entirely server side, but the buff flag is forced to 1
+* This mod is multiplayer compatible, the config is entirely server side, but the "Buff" is enabled
 * Items that are inbetween two players with magnets will "float"
 * Due to the way the "grab delay" is only set in singleplayer, items dropped by the player will instantly latch onto the player, which is normal behavior
 * Items might not get sucked up and turn into a "ghost" with the Auto Trash Mod enabled
 * Lost items due to this bug won't be recovered
-* Report any bugs in the forum thread
+* Report any bugs in the forum thread (please)
 
 ### Progression: (default config)
 
@@ -53,10 +53,11 @@ Ends with: (killing Moonlord)
 * If you increase Vel or Acc too much from those recommended above, items might get "stuck" on you until you deactivate it again
 * Beware of lag when increasing these values, especially range
 * If the difference between velocity and acceleration is too big, items will go in circles around you or get stuck until you deactivate it
+* After you change the values in the config, use the magnet again to take effect
 
 ### Changelog:
 
- v1.0: tml 0.11.4 update. Updated to ingame config, fixed coin filter, added custom black/whitelist
+ v1.0: updated to tml 0.11.4. Fixed multiplayer, updated to ingame config, fixed coin filter, added custom black/whitelist
 
  v0.2: Updated to ingame config, fixed coin filter
 

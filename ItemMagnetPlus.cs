@@ -17,7 +17,7 @@ namespace ItemMagnetPlus
             ConfigWrapper.Unload();
         }
 
-        //Mod Helpers compat
+        // Mod Helpers compat
         public static string GithubUserName { get { return "direwolf420"; } }
         public static string GithubProjectName { get { return "ItemMagnetPlus"; } }
 
@@ -65,9 +65,9 @@ namespace ItemMagnetPlus
                     break;
                 case IMPMessageType.SendClientChanges:
                     playernumber = reader.ReadByte();
-                    range = reader.ReadInt32();         //int
+                    range = reader.ReadInt32();
 
-                    variousBooleans = reader.ReadByte();//byte
+                    variousBooleans = reader.ReadByte();
                     currentlyActive = variousBooleans[0];
 
                     mPlayer = Main.player[playernumber].GetModPlayer<ItemMagnetPlusPlayer>();
@@ -84,7 +84,7 @@ namespace ItemMagnetPlus
                     }
                     break;
                 default:
-                    ErrorLogger.Log("ItemMagnetPlus: Unknown Message type: " + msgType);
+                    Logger.Info("Unknown Message type: " + msgType);
                     break;
             }
         }

@@ -7,7 +7,7 @@ Item Magnet (and corresponding buff) that
 * can be toggled on and off
 * has adjustable range and item succ speed
 * has increased stats after killing bosses
-* customizable via config (\Documents\My Games\Terraria\ModLoader\Mod Configs\ItemMagnetPlus_Config) to fit your playstyle
+* customizable via config ingame to fit your playstyle
 
 How to use:
 * Left click cycles through its ranges
@@ -22,7 +22,7 @@ Multiplayer:
 * Due to the way the "grab delay" is only set in singleplayer, items dropped by the player will instantly latch onto the player, which is normal behavior
 * Items might not get sucked up and turn into a "ghost" with the Auto Trash Mod enabled
 * Lost items due to this bug won't be recovered
-* Report any bugs in the forum thread
+* Report any bugs in the forum thread (please)
 
 Progression: (default config)
  Starts with:
@@ -43,10 +43,11 @@ Progression: (default config)
 * If you increase Vel or Acc too much from those recommended above, items might get "stuck" on you until you deactivate it again
 * Beware of lag when increasing these values, especially range
 * If the difference between velocity and acceleration is too big, items will go in circles around you or get stuck until you deactivate it
+* After you change the values in the config, use the magnet again to take effect
 
 Changelog:
 
- v1.0: tml 0.11.4 update. Updated to ingame config, fixed coin filter, added custom black/whitelist
+ v1.0: tml 0.11.4 update. Fixed multiplayer, updated to ingame config, fixed coin filter, added custom black/whitelist
 
  v0.1.11: Added config flag to have the magnet work either from inside the inventory or only when held
 

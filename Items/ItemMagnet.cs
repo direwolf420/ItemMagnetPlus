@@ -45,8 +45,8 @@ namespace ItemMagnetPlus.Items
             {
                 tooltips.Add(new TooltipLine(mod, "Range", "Magnet is off"));
             }
-            //If player has buff, then he automatically also has the item
-            //If player doesn't have the buff, he can still have the item, just not activated
+            // If player has buff, then he automatically also has the item
+            // If player doesn't have the buff, he can still have the item, just not activated
         }
 
         public override void AddRecipes()
@@ -87,19 +87,14 @@ namespace ItemMagnetPlus.Items
 
         private void DrawRectangle(Player player, int radius, Color color)
         {
-            //int stage = radius / (mPlayer.magnetScreenRadius * 16);
-            //radius -= mPlayer.magnetScreenRadius * 16 * stage;
-            //color = new Color(color.R + stage * 30, color.G, color.B - stage * 30);
             float fullhdradius = radius * 0.5625f;
 
-            //before: radius in world coordinates
             Vector2 pos = player.position;
             float leftx = pos.X - radius;
             float topy = pos.Y - fullhdradius;
             float rightx = leftx + player.width + radius * 2;
             float boty = topy + player.height + fullhdradius * 2;
 
-            //after radius in tile coordinates
             QuickDustLine(new Vector2(leftx, topy), new Vector2(rightx, topy), radius / 16f, color); //clock wise starting top left
             QuickDustLine(new Vector2(rightx, topy), new Vector2(rightx, boty), fullhdradius / 16f, color);
             QuickDustLine(new Vector2(rightx, boty), new Vector2(leftx, boty), radius / 16f, color);
@@ -113,17 +108,17 @@ namespace ItemMagnetPlus.Items
 
             if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
             {
-                //right click feature only shows the range
+                // Right click feature only shows the range
                 if (player.altFunctionUse == 2)
                 {
                     if(mPlayer.magnetActive == 0)
                     {
-                        //nothing
+                        // Nothing
                         CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, "magnet is off");
                     }
                     else if(Config.Instance.Buff && player.HasBuff(mod.BuffType("ItemMagnetBuff")))
                     {
-                        //shows the range
+                        // Shows the range
                         DrawRectangle(player, mPlayer.magnetGrabRadius * 16, CombatText.HealMana);
                         CombatText.NewText(player.getRect(), CombatText.HealMana, "range:" + mPlayer.magnetGrabRadius);
                     }
@@ -177,7 +172,7 @@ namespace ItemMagnetPlus.Items
                         mPlayer.UpdateMagnetValues(radius);
                         DrawRectangle(player, mPlayer.magnetGrabRadius * 16, new Color(200, 255, 200));
 
-                        //here radius is already + divider
+                        // Here radius is already + divider
                         string ranges = "range:" + radius;
                         if (radius + divider > mPlayer.magnetMaxGrabRadius)
                         {
