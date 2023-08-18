@@ -58,7 +58,7 @@ Mods: {
 				PickupEffect: {
 					Label: "[i:FragmentNebula] Przedmioty z efektem przy podnoszeniu"
 					Tooltip: Przełącz, jeśli magnes ma przyciągać rzeczy takie jak wzmocnienia pochodzące ze Zbroi Nebuli, czy też rzeczy pochodzące z modyfikacji takie jak nuty z Thorium.
-                                }
+				}
 
 				Blacklist: {
 					Label: Czarna lista magnesu
