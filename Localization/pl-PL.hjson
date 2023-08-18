@@ -77,7 +77,7 @@ Mods: {
 
 				Buff: {
 					Label: Wzmocnienie
-					Tooltip: Przełącz, żeby włączenie magnesu dawało graczowi incormujące o tym wzmocnienie.
+					Tooltip: Przełącz, żeby włączenie magnesu dawało graczowi informujące o tym wzmocnienie.
 				}
 
 				Held: {
@@ -138,8 +138,8 @@ Mods: {
 
 			FilterListModeType: {
 				Tooltip: ""
-				Blacklist.Label: Biała lista
-				Whitelist.Label: Czarna lista
+				Blacklist.Label: Czarna lista
+				Whitelist.Label: Biała lista
 			}
 
 			ScaleModeType: {
