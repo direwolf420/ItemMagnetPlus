@@ -2,154 +2,154 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				// DisplayName: Item Magnet
-				// Description: A magnetic field surrounds you!
-				// CurrentRange: Current Range: {0}
-				// CurrentVelocity: Current Velocity: {0}
-				// CurrentAcceleration: Current Acceleration: {0}
+				DisplayName: Предметный магнит
+				Description: Тебя окружает магнитное поле!
+				CurrentRange: Текущая дистанция: {0}
+				CurrentVelocity: Текущая скорость: {0}
+				CurrentAcceleration: Текущее ускорение: {0}
 			}
 		}
 
 		Items: {
 			ItemMagnet: {
-				// DisplayName: Item Magnet
-				// CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
-				// CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
-				// CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				// LeftClickToChangeRange: Left Click to [c/{0}:change range]
-				// LeftClickToToggle: Left Click to [c/{0}:toggle on/off]
-				// RightClickToShowCurrentRange: Right Click to [c/{0}:show current range]
-				// RightClickToTurnOff: Right Click to [c/{0}:turn off]
-				// MagnetIsOff: Magnet is off
-				// MagnetOff: Magnet off
-				// Off: off
-				// Range: range: {0}
-				// NextRange: | next: {0}
+				DisplayName: Предметный магнит
+				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
+				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
+				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
+				LeftClickToChangeRange: Нажмите левой кнопкой мыши, чтобы [c/{0}:изменить дистанцию]
+				LeftClickToToggle: Нажмите левой кнопкой мыши, чтобы [c/{0}:включить/отключить]
+				RightClickToShowCurrentRange: Нажмите правой кнопкой мыши, чтобы [c/{0}:показать текущую дистанцию]
+				RightClickToTurnOff: Нажмите правой кнопкой мыши, чтобы [c/{0}:отключить]
+				MagnetIsOff: Магнит отключён
+				MagnetOff: Магнит отключён
+				Off: отключить
+				Range: Дистанция: {0} 
+				NextRange: | Затем: {0}
 			}
 		}
 
 		Configs: {
 			Config: {
-				// DisplayName: Config
+				DisplayName: Настройки
 
 				Headers: {
-					// PresetItemWhitelist: Preset Item Whitelist
-					// CustomItemFilter: Custom Item Filter
-					// General: General
-					// MagnetBehavior: Magnet Behavior (Only works ingame)
-					// ResultingMagnetStats: Resulting Magnet Stats
+					PresetItemWhitelist: Основной белый список предметов
+					CustomItemFilter: Пользовательский фильтр предметов
+					General: Основное
+					MagnetBehavior: Правила поведения магнита (в игре)
+					ResultingMagnetStats: Итоговая статистика магнита
 				}
 
 				Hearts: {
-					// Label: "[i:Heart] Hearts"
-					// Tooltip: Toggle if hearts should be picked up by the magnet
+					Label: "[i:Heart] Сердца"
+					Tooltip: Магнит будет подбирать сердца, восстанавливающие здоровье
 				}
 
 				ManaStars: {
-					// Label: "[i:Star] Mana Stars"
-					// Tooltip: Toggle if mana stars should be picked up by the magnet
+					Label: "[i:Star] Звёзды"
+					Tooltip: Магнит будет подбирать звёзды, восстанавливающие ману
 				}
 
 				Coins: {
-					// Label: "[i:GoldCoin] Coins"
-					// Tooltip: Toggle if coins should be picked up by the magnet
+					Label: "[i:GoldCoin] Монеты"
+					Tooltip: Магнит будет подбирать монеты
 				}
 
 				PickupEffect: {
-					// Label: "[i:FragmentNebula] Pickup Effect Items"
-					// Tooltip: Toggle if items like nebula armor boosters or modded items like the music notes from Thorium should be picked up by the magnet
+					Label: "[i:FragmentNebula] Предметы-усилители"
+					Tooltip: Магнит будет подбирать предметы-усилители. (Пример: усилители от брони туманности; музыкальные ноты из модификации 'Thorium')
 				}
 
 				Blacklist: {
-					// Label: Magnet Blacklist
-					// Tooltip: Customize which items the magnet should never pick up
+					Label: Чёрный список
+					Tooltip: Настройка списка предметов, которые магниту будет запрещено подбирать
 				}
 
 				Whitelist: {
-					// Label: Magnet Whitelist
-					// Tooltip: Customize which items the magnet should always pick up
+					Label: Белый список
+					Tooltip: Настройка списка предметов, который магнит будет всегда подбирать
 				}
 
 				FilterListMode: {
-					// Label: List Mode Toggle
-					// Tooltip: Change to select which list will be used for the item filter
+					Label: Переключение типа списка
+					Tooltip: Выбор списка, правилам которого фильтр магнита будет следовать
 				}
 
 				Buff: {
-					// Label: Buff
-					// Tooltip: Toggle if having the magnet active gives you a buff
+					Label: Положительный эффект
+					Tooltip: Отображения действия магнита в виде положительного эффекта (бафф)
 				}
 
 				Held: {
-					// Label: Held
-					// Tooltip: Toggle if magnet should only work when you hold it (instead of being in the inventory)
+					Label: Удерживание
+					Tooltip: Магнит будет действовать только пока вы его держите в руках (а не просто пока он в инвентаре)
 				}
 
 				OnEnter: {
-					// Label: Activate On Enter
-					// Tooltip: Toggle if magnet should be automatically activated when entering the world
+					Label: Включение при входе
+					Tooltip: Магнит будет автоматически включён при входе в мир
 				}
 
 				NeedsSpace: {
-					// Label: Needs Space
-					// Tooltip: Toggle if magnet should only work when there is space in the inventory
+					Label: Необходимость свободного места
+					Tooltip: Магнит будет работать только пока в инвентаре есть свободное место
 				}
 
 				Instant: {
-					// Label: Instant
-					// Tooltip: Toggle if items should teleport instead of home - This ignores any velocity/acceleration, but not range
+					Label: Мгновенность
+					Tooltip: Магнит будет телепортировать предметы в инвентарь, вместо того, чтобы притягивать. Скорость притягивания будет игнорироваться, но не его дистанция
 				}
 
 				Range: {
-					// Label: Range
-					// Tooltip: Base magnet radius in tiles
+					Label: Дистанция
+					Tooltip: Изначальный радиус действия магнита (в блоках)
 				}
 
 				Velocity: {
-					// Label: Velocity
-					// Tooltip: Speed at which items get pulled towards you
+					Label: Скорость
+					Tooltip: Скорость, с которой предметы притягиваются к Вам
 				}
 
 				Acceleration: {
-					// Label: Acceleration
-					// Tooltip: How fast an item reaches its peak speed
+					Label: Ускорение
+					Tooltip: Насколько быстро скорость притягивания предмета достигает своего пика
 				}
 
 				ScaleMode: {
-					// Label: Scale
-					// Tooltip: Scaling Mode
+					Label: Постепенное улучшение
+					Tooltip: Характеристики магнита будут постепенно увеличиваться
 				}
 
 				CurrentMaxRange: {
-					// Label: Resulting Max Range
-					// Tooltip: ""
+					Label: Итоговая максимальная дистанция
+					Tooltip: ""
 				}
 
 				CurrentVelocity: {
-					// Label: Resulting Velocity
-					// Tooltip: ""
+					Label: Итоговая скорость
+					Tooltip: ""
 				}
 
 				CurrentAcceleration: {
-					// Label: Resulting Acceleration
-					// Tooltip: ""
+					Label: Итоговое ускорение
+					Tooltip: ""
 				}
 			}
 
 			FilterListModeType: {
-				// Tooltip: ""
-				// Blacklist.Label: Blacklist
-				// Whitelist.Label: Whitelist
+				Tooltip: ""
+				Blacklist.Label: Чёрный список
+				Whitelist.Label: Белый список
 			}
 
 			ScaleModeType: {
-				// Tooltip: ""
-				// Bosses.Label: Increase With Bosses
-				// AlwaysMaxRange.Label: Bosses + Max Range
-				// OnlyConfig.Label: Custom + Max Range
+				Tooltip: ""
+				Bosses.Label: Увеличение с Боссами
+				AlwaysMaxRange.Label: Боссы + Максимальная дистанция
+				OnlyConfig.Label: Пользовательские + Максимальная дистанция
 			}
 
-			// Common.AcceptClientChanges: Only the host of this world can change the config! Do so in singleplayer.
+			Common.AcceptClientChanges: Только владелец этого мира может менять настройки! Смените настройки в одиночной игре.
 		}
 	}
 }
