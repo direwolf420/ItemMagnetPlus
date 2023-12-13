@@ -2,154 +2,154 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				// DisplayName: Item Magnet
-				// Description: A magnetic field surrounds you!
-				// CurrentRange: Current Range: {0}
-				// CurrentVelocity: Current Velocity: {0}
-				// CurrentAcceleration: Current Acceleration: {0}
+				DisplayName: Magnete per oggetti
+				Description: Un campo magnetico ti circonda!
+				CurrentRange: Gittata attuale: {0}
+				CurrentVelocity: Velocità attuale: {0}
+				CurrentAcceleration: Accelerazione attuale: {0}
 			}
 		}
 
 		Items: {
 			ItemMagnet: {
-				// DisplayName: Item Magnet
-				// CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
-				// CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
-				// CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				// LeftClickToChangeRange: Left Click to [c/{0}:change range]
-				// LeftClickToToggle: Left Click to [c/{0}:toggle on/off]
-				// RightClickToShowCurrentRange: Right Click to [c/{0}:show current range]
-				// RightClickToTurnOff: Right Click to [c/{0}:turn off]
-				// MagnetIsOff: Magnet is off
-				// MagnetOff: Magnet off
-				// Off: off
-				// Range: range: {0}
-				// NextRange: | next: {0}
+				DisplayName: Magnete per oggetti
+				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
+				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
+				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
+				LeftClickToChangeRange: Premi tasto sinistro per [c/{0}:cambiare gittata]
+				LeftClickToToggle: Premi tasto sinistro per [c/{0}:attivare/disattivare
+				RightClickToShowCurrentRange: Premi tasto destro per [c/{0}:mostrare gittata attuale]
+				RightClickToTurnOff: Premi tasto destro per [c/{0}:disattivare]
+				MagnetIsOff: Magnete disattivato
+				MagnetOff: Magnete disattivato
+				Off: Disattivato
+				Range: Gittata: {0}
+				NextRange: | Successiva: {0}
 			}
 		}
 
 		Configs: {
 			Config: {
-				// DisplayName: Config
+				DisplayName: Configurazione
 
 				Headers: {
-					// PresetItemWhitelist: Preset Item Whitelist
-					// CustomItemFilter: Custom Item Filter
-					// General: General
-					// MagnetBehavior: Magnet Behavior (Only works ingame)
-					// ResultingMagnetStats: Resulting Magnet Stats
+					PresetItemWhitelist: Whitelist elementi preimpostati
+					CustomItemFilter: Filtro oggetto personalizzato
+					General: Generale
+					MagnetBehavior: Comportamento magnete (Funziona solo ingame)
+					ResultingMagnetStats: Risultati statistiche del magnete
 				}
 
 				Hearts: {
-					// Label: "[i:Heart] Hearts"
-					// Tooltip: Toggle if hearts should be picked up by the magnet
+					Label: "[i:Heart] Cuori"
+					Tooltip: Attiva/disattiva se i cuori devono essere raccolti dal magnete
 				}
 
 				ManaStars: {
-					// Label: "[i:Star] Mana Stars"
-					// Tooltip: Toggle if mana stars should be picked up by the magnet
+					Label: "[i:Star] Cristalli di mana"
+					Tooltip: Attiva/disattiva se i cristalli di mana devono essere raccolti dal magnete
 				}
 
 				Coins: {
-					// Label: "[i:GoldCoin] Coins"
-					// Tooltip: Toggle if coins should be picked up by the magnet
+					Label: "[i:GoldCoin] Monete"
+					Tooltip: Attiva/disattiva se le monete devono essere raccolte dal magnete
 				}
 
 				PickupEffect: {
-					// Label: "[i:FragmentNebula] Pickup Effect Items"
-					// Tooltip: Toggle if items like nebula armor boosters or modded items like the music notes from Thorium should be picked up by the magnet
+					Label: "[i:FragmentNebula] Oggetti con effetto nel pick-up"
+					Tooltip: Attiva/disattiva se oggetti come i potenziamenti bonus del set armatura della nebulosa oppure altri oggetti come le note musicali dalla mod Thorium devono essere raccolte dal magnete
 				}
 
 				Blacklist: {
-					// Label: Magnet Blacklist
-					// Tooltip: Customize which items the magnet should never pick up
+					Label: Blacklist magnete
+					Tooltip: Personalizza quali oggetti il magnete non raccoglierà
 				}
 
 				Whitelist: {
-					// Label: Magnet Whitelist
-					// Tooltip: Customize which items the magnet should always pick up
+					Label: Magnet Whitelist
+					Tooltip: Personalizza quali oggetti il magnete raccoglierà
 				}
 
 				FilterListMode: {
-					// Label: List Mode Toggle
-					// Tooltip: Change to select which list will be used for the item filter
+					Label: Alterna la lista della mod
+					Tooltip: Cambiare per selezionare quale lista utilizzare per il filtro degli oggetti
 				}
 
 				Buff: {
-					// Label: Buff
-					// Tooltip: Toggle if having the magnet active gives you a buff
+					Label: Buff
+					Tooltip: Attiva/disattiva se avere il magnete attivo aggiunge un buff
 				}
 
 				Held: {
-					// Label: Held
-					// Tooltip: Toggle if magnet should only work when you hold it (instead of being in the inventory)
+					Label: Impugnare
+					Tooltip: Attiva/disattiva se il magnete dovrebbe funzionare solo quando è tenuto in mano (invece di essere dentro l'inventario)
 				}
 
 				OnEnter: {
-					// Label: Activate On Enter
-					// Tooltip: Toggle if magnet should be automatically activated when entering the world
+					Label: Attiva in entrata
+					Tooltip: Attiva/disattiva se il magnete dovrebbe essere attivato automaticamente quando si entra in un mondo
 				}
 
 				NeedsSpace: {
-					// Label: Needs Space
-					// Tooltip: Toggle if magnet should only work when there is space in the inventory
+					Label: Bisogno di spazio
+					Tooltip: Attiva/disattiva se il magnete dovrebbe funzionare solo quando c'è spazio nell'inventario
 				}
 
 				Instant: {
-					// Label: Instant
-					// Tooltip: Toggle if items should teleport instead of home - This ignores any velocity/acceleration, but not range
+					Label: Instantaneo
+					Tooltip: Attiva/disattiva se gli oggetti dovrebbero teletrasportarsi invece di inseguirti - Questo ignora ogni cambiamento alla velocità/accelerazione, ma non la gittata
 				}
 
 				Range: {
-					// Label: Range
-					// Tooltip: Base magnet radius in tiles
+					Label: Gittata
+					Tooltip: Gittata base del magnete ogni tile
 				}
 
 				Velocity: {
-					// Label: Velocity
-					// Tooltip: Speed at which items get pulled towards you
+					Label: Velocità
+					Tooltip: Velocità alla quale gli oggetti vengono tirati verso di te
 				}
 
 				Acceleration: {
-					// Label: Acceleration
-					// Tooltip: How fast an item reaches its peak speed
+					Label: Accelerazione
+					Tooltip: Quanto veloce un oggetto arriva alla sua massima velocità
 				}
 
 				ScaleMode: {
-					// Label: Scale
-					// Tooltip: Scaling Mode
+					Label: Scala
+					Tooltip: Modalità di scalatura
 				}
 
 				CurrentMaxRange: {
-					// Label: Resulting Max Range
-					// Tooltip: ""
+					Label: Risultato gittata massima
+					Tooltip: ""
 				}
 
 				CurrentVelocity: {
-					// Label: Resulting Velocity
-					// Tooltip: ""
+					Label: Risultato velocità
+					Tooltip: ""
 				}
 
 				CurrentAcceleration: {
-					// Label: Resulting Acceleration
-					// Tooltip: ""
+					Label: Risultato accelerazione
+					Tooltip: ""
 				}
 			}
 
 			FilterListModeType: {
-				// Tooltip: ""
-				// Blacklist.Label: Blacklist
-				// Whitelist.Label: Whitelist
+				Tooltip: ""
+				Blacklist.Label: Blacklist
+				Whitelist.Label: Whitelist
 			}
 
 			ScaleModeType: {
-				// Tooltip: ""
-				// Bosses.Label: Increase With Bosses
-				// AlwaysMaxRange.Label: Bosses + Max Range
-				// OnlyConfig.Label: Custom + Max Range
+				Tooltip: ""
+				Bosses.Label: Aumenta con boss
+				AlwaysMaxRange.Label: Boss + Gittata massima
+				OnlyConfig.Label: Personalizzato + Gittata massima
 			}
 
-			// Common.AcceptClientChanges: Only the host of this world can change the config! Do so in singleplayer.
+			Common.AcceptClientChanges: Solo il proprietario del mondo può cambiare la configurazione! Fallo in giocatore singolo.
 		}
 	}
 }
