@@ -33,8 +33,8 @@ Mods: {
 				DisplayName: Configurazione
 
 				Headers: {
-					PresetItemWhitelist: Whitelist elementi preimpostati
-					CustomItemFilter: Filtro oggetto personalizzato
+					PresetItemWhitelist: Whitelist oggetti preimpostati
+					CustomItemFilter: Filtro oggetti personalizzato
 					General: Generale
 					MagnetBehavior: Comportamento magnete (Funziona solo ingame)
 					ResultingMagnetStats: Risultati statistiche del magnete
