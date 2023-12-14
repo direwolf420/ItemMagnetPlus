@@ -46,8 +46,8 @@ Mods: {
 				}
 
 				ManaStars: {
-					Label: "[i:Star] Cristalli di mana"
-					Tooltip: Attiva/disattiva se i cristalli di mana devono essere raccolti dal magnete
+					Label: "[i:Star] Stelle di mana"
+					Tooltip: Attiva/disattiva se le stelle di mana devono essere raccolte dal magnete
 				}
 
 				Coins: {
