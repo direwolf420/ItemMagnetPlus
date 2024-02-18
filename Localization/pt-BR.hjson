@@ -2,151 +2,151 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				// DisplayName: Item Magnet
-				// Description: A magnetic field surrounds you!
-				// CurrentRange: Current Range: {0}
-				// CurrentVelocity: Current Velocity: {0}
-				// CurrentAcceleration: Current Acceleration: {0}
+				DisplayName: Magnetizador de itens
+				Description: Um campo magnético o cerca!
+				CurrentRange: Alcance atual: {0}
+				CurrentVelocity: Velocidade atual: {0}
+				CurrentAcceleration: Aceleração atual: {0}
 			}
 		}
 
 		Items: {
 			ItemMagnet: {
-				// DisplayName: Item Magnet
-				// CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
-				// CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
-				// CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				// LeftClickToChangeRange: Left Click to [c/{0}:change range]
-				// LeftClickToToggle: Left Click to [c/{0}:toggle on/off]
-				// RightClickToShowCurrentRange: Right Click to [c/{0}:show current range]
-				// RightClickToTurnOff: Right Click to [c/{0}:turn off]
-				// MagnetIsOff: Magnet is off
-				// MagnetOff: Magnet off
-				// Off: off
-				// Range: range: {0}
-				// NextRange: | next: {0}
+				DisplayName: Magnetizador de itens
+				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
+				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
+				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
+				LeftClickToChangeRange: Botão esquerdo para [c/{0}:mudar alcance]
+				LeftClickToToggle: Botão esquerdo para [c/{0}:ligar ou desligar]
+				RightClickToShowCurrentRange: Botão direito para [c/{0}:mostrar alcance atual]
+				RightClickToTurnOff: Botão direito para [c/{0}:desligar]
+				MagnetIsOff: Magnetismo está desligado
+				MagnetOff: Magnetismo desligado
+				Off: desligado
+				Range: Alcance: {0}
+				NextRange: | Próximo: {0}
 			}
 		}
 
 		Configs: {
 			Config: {
-				// DisplayName: Config
+				DisplayName: Configuração
 
 				Headers: {
-					// PresetItemWhitelist: Preset Item Whitelist
-					// CustomItemFilter: Custom Item Filter
-					// General: General
-					// MagnetBehavior: Magnet Behavior (Only works ingame)
-					// ResultingMagnetStats: Resulting Magnet Stats
+					PresetItemWhitelist: Lista branca de itens
+					CustomItemFilter: Filtro customizado de itens
+					General: Geral
+					MagnetBehavior: Comportamento do magnetismo (Só funciona dentro do jogo)
+					ResultingMagnetStats: Estatística do magnetizador
 				}
 
 				Hearts: {
-					// Label: "[i:Heart] Hearts"
-					// Tooltip: Toggle if hearts should be picked up by the magnet
+					Label: "[i:Heart] Corações"
+					Tooltip: Altera se corações devem ser atraídos pelo magnetizador
 				}
 
 				ManaStars: {
-					// Label: "[i:Star] Mana Stars"
-					// Tooltip: Toggle if mana stars should be picked up by the magnet
+					Label: "[i:Star] Estrelas de mana"
+					Tooltip: Altera se estrelas de mana devem ser atraídas pelo magnetizador
 				}
 
 				Coins: {
-					// Label: "[i:GoldCoin] Coins"
-					// Tooltip: Toggle if coins should be picked up by the magnet
+					Label: "[i:GoldCoin] Moedas"
+					Tooltip: Altera se moedas devem ser atraídas pelo magnetizador
 				}
 
 				PickupEffect: {
-					// Label: "[i:FragmentNebula] Pickup Effect Items"
-					// Tooltip: Toggle if items like nebula armor boosters or modded items like the music notes from Thorium should be picked up by the magnet
+					Label: "[i:FragmentNebula] Atrair itens de efeito"
+					Tooltip: Altera se itens de efeito como as partículas da armadura de nébula ou se itens de outros mods como as notas musicais do Thorium devem ser atraídas pelo magnetizador
 				}
 
 				Blacklist: {
-					// Label: Magnet Blacklist
-					// Tooltip: Customize which items the magnet should never pick up
+					Label: Lista negra do magnetizador
+					Tooltip: Personalize quais itens nunca devem ser atraídos pelo magnetizador
 				}
 
 				Whitelist: {
-					// Label: Magnet Whitelist
-					// Tooltip: Customize which items the magnet should always pick up
+					Label: Lista branca do magnetizador
+					Tooltip: Personalize quais itens devem sempre ser atraídos pelo magnetizador
 				}
 
 				FilterListMode: {
-					// Label: List Mode Toggle
-					// Tooltip: Change to select which list will be used for the item filter
+					Label: Alterar lista de modo
+					Tooltip: Altere para selecionar qual lista vai ser usada para o filtro de itens
 				}
 
 				Buff: {
-					// Label: Buff
-					// Tooltip: Toggle if having the magnet active gives you a buff
+					Label: Buff
+					Tooltip: Altere para ter um buff quando o magnetizador estiver ativo
 				}
 
 				Held: {
-					// Label: Held
-					// Tooltip: Toggle if magnet should only work when you hold it (instead of being in the inventory)
+					Label: Segurando
+					Tooltip: Altera se o magnetizador só vai funcionar se você o estiver segurando (ao invés de funcionar quando estiver no inventário)
 				}
 
 				OnEnter: {
-					// Label: Activate On Enter
-					// Tooltip: Toggle if magnet should be automatically activated when entering the world
+					Label: Ativa ao entrar
+					Tooltip: Altera se o magnetizador vai ser automaticamente ativado ao entrar em um mundo
 				}
 
 				NeedsSpace: {
-					// Label: Needs Space
-					// Tooltip: Toggle if magnet should only work when there is space in the inventory
+					Label: Precisa de espaço
+					Tooltip: Altera se o magnetizador só vai funcionar se houver espaço no inventário
 				}
 
 				Instant: {
-					// Label: Instant
-					// Tooltip: Toggle if items should teleport instead of home - This ignores any velocity/acceleration, but not range
+					Label: Instântaneo
+					Tooltip: Altera se os itens devem ser teleportados ao invés de serem puxados até você - Essa configuração ignora velocidade/aceleração, mas não alcance
 				}
 
 				Range: {
-					// Label: Range
-					// Tooltip: Base magnet radius in tiles
+					Label: Alcalce
+					Tooltip: Alcance base do magnetizador em blocos
 				}
 
 				Velocity: {
-					// Label: Velocity
-					// Tooltip: Speed at which items get pulled towards you
+					Label: Velocidade
+					Tooltip: O quão rápido os itens são puxados até você
 				}
 
 				Acceleration: {
-					// Label: Acceleration
-					// Tooltip: How fast an item reaches its peak speed
+					Label: Aceleração
+					Tooltip: O quão rápido os itens chegam em sua velocidade máxima
 				}
 
 				ScaleMode: {
-					// Label: Scale
-					// Tooltip: Scaling Mode
+					Label: Escala
+					Tooltip: Modo de escala
 				}
 
 				CurrentMaxRange: {
-					// Label: Resulting Max Range
-					// Tooltip: ""
+					Label: Resultado do alcance máximo
+					Tooltip: ""
 				}
 
 				CurrentVelocity: {
-					// Label: Resulting Velocity
-					// Tooltip: ""
+					Label: Resultado da velocidade
+					Tooltip: ""
 				}
 
 				CurrentAcceleration: {
-					// Label: Resulting Acceleration
-					// Tooltip: ""
+					Label: Resultado da aceleração
+					Tooltip: ""
 				}
 			}
 
 			FilterListModeType: {
-				// Tooltip: ""
-				// Blacklist.Label: Blacklist
-				// Whitelist.Label: Whitelist
+				Tooltip: ""
+				Blacklist.Label: Lista negra
+				Whitelist.Label: Lista branca
 			}
 
 			ScaleModeType: {
-				// Tooltip: ""
-				// Bosses.Label: Increase With Bosses
-				// AlwaysMaxRange.Label: Bosses + Max Range
-				// OnlyConfig.Label: Custom + Max Range
+				Tooltip: ""
+				Bosses.Label: Aumenta com a quantidade de chefes derrotados
+				AlwaysMaxRange.Label: Chefes derrotados + alcance máximo
+				OnlyConfig.Label: Personalizado + alcance máximo
 			}
 		}
 	}
