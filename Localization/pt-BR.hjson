@@ -2,7 +2,7 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				DisplayName: Magnetizador de itens
+				DisplayName: Ímã de itens
 				Description: Um campo magnético o cerca!
 				CurrentRange: Alcance atual: {0}
 				CurrentVelocity: Velocidade atual: {0}
@@ -12,7 +12,7 @@ Mods: {
 
 		Items: {
 			ItemMagnet: {
-				DisplayName: Magnetizador de itens
+				DisplayName: Ímã de itens
 				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
 				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
 				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
