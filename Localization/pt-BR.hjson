@@ -52,7 +52,7 @@ Mods: {
 
 				Coins: {
 					Label: "[i:GoldCoin] Moedas"
-					Tooltip: Altera se moedas devem ser atraídas pelo Ímã
+					Tooltip: Altera se moedas devem ser atraídas pelo ímã
 				}
 
 				PickupEffect: {
