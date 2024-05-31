@@ -2,151 +2,151 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				// DisplayName: Item Magnet
-				// Description: A magnetic field surrounds you!
-				// CurrentRange: Current Range: {0}
-				// CurrentVelocity: Current Velocity: {0}
-				// CurrentAcceleration: Current Acceleration: {0}
+				DisplayName: 物品磁铁
+				Description: 磁场围绕着你！
+				CurrentRange: 当前范围：{0}
+				CurrentVelocity: 当前速度：{0}
+				CurrentAcceleration: 当前加速度：{0}
 			}
 		}
 
 		Items: {
 			ItemMagnet: {
-				// DisplayName: Item Magnet
-				// CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
-				// CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
-				// CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				// LeftClickToChangeRange: Left Click to [c/{0}:change range]
-				// LeftClickToToggle: Left Click to [c/{0}:toggle on/off]
-				// RightClickToShowCurrentRange: Right Click to [c/{0}:show current range]
-				// RightClickToTurnOff: Right Click to [c/{0}:turn off]
-				// MagnetIsOff: Magnet is off
-				// MagnetOff: Magnet off
-				// Off: off
-				// Range: range: {0}
-				// NextRange: | next: {0}
+				DisplayName: 物品磁铁
+				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
+				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
+				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
+				LeftClickToChangeRange: 左键点击以[c/{0}:改变范围]
+				LeftClickToToggle: 左键点击以[c/{0}:开启/关闭]
+				RightClickToShowCurrentRange: 右键点击以[c/{0}:显示当前范围]
+				RightClickToTurnOff: 右键点击以[c/{0}:关闭]
+				MagnetIsOff: 磁铁已关闭
+				MagnetOff: 关闭磁铁
+				Off: 关闭
+				Range: 范围：{0}
+				NextRange: | 下一个：{0}
 			}
 		}
 
 		Configs: {
 			Config: {
-				// DisplayName: Config
+				DisplayName: 配置
 
 				Headers: {
-					// PresetItemWhitelist: Preset Item Whitelist
-					// CustomItemFilter: Custom Item Filter
-					// General: General
-					// MagnetBehavior: Magnet Behavior (Only works ingame)
-					// ResultingMagnetStats: Resulting Magnet Stats
+					PresetItemWhitelist: 预设物品白名单
+					CustomItemFilter: 自定义物品筛选
+					General: 常规
+					MagnetBehavior: 磁铁行为（仅在进入世界后有效）
+					ResultingMagnetStats: 磁铁数据总计
 				}
 
 				Hearts: {
-					// Label: "[i:Heart] Hearts"
-					// Tooltip: Toggle if hearts should be picked up by the magnet
+					Label: "[i:Heart] 心"
+					Tooltip: 磁铁是否应该吸取心
 				}
 
 				ManaStars: {
-					// Label: "[i:Star] Mana Stars"
-					// Tooltip: Toggle if mana stars should be picked up by the magnet
+					Label: "[i:Star] 魔力力星星"
+					Tooltip: 磁铁是否应该吸取魔力星星
 				}
 
 				Coins: {
-					// Label: "[i:GoldCoin] Coins"
-					// Tooltip: Toggle if coins should be picked up by the magnet
+					Label: "[i:GoldCoin] 钱币"
+					Tooltip: 磁铁是否应该吸取钱币
 				}
 
 				PickupEffect: {
-					// Label: "[i:FragmentNebula] Pickup Effect Items"
-					// Tooltip: Toggle if items like nebula armor boosters or modded items like the music notes from Thorium should be picked up by the magnet
+					Label: "[i:FragmentNebula] 拾取特效物品"
+					Tooltip: 磁铁是否应该吸取像星云护甲强化焰或像瑟银的音乐符这样的模组物品
 				}
 
 				Blacklist: {
-					// Label: Magnet Blacklist
-					// Tooltip: Customize which items the magnet should never pick up
+					Label: 磁铁黑名单
+					Tooltip: 自定义磁铁永远不应吸取的物品
 				}
 
 				Whitelist: {
-					// Label: Magnet Whitelist
-					// Tooltip: Customize which items the magnet should always pick up
+					Label: 磁铁白名单
+					Tooltip: 自定义磁铁应该一直吸取的物品
 				}
 
 				FilterListMode: {
-					// Label: List Mode Toggle
-					// Tooltip: Change to select which list will be used for the item filter
+					Label: 筛选列表
+					Tooltip: 选择物品筛选列表
 				}
 
 				Buff: {
-					// Label: Buff
-					// Tooltip: Toggle if having the magnet active gives you a buff
+					Label: 增益效果
+					Tooltip: 激活磁铁是否给你增益效果
 				}
 
 				Held: {
-					// Label: Held
-					// Tooltip: Toggle if magnet should only work when you hold it (instead of being in the inventory)
+					Label: 物品栏模式
+					Tooltip: 磁铁是否仅在物品栏时才起作用（而不是在背包中）
 				}
 
 				OnEnter: {
-					// Label: Activate On Enter
-					// Tooltip: Toggle if magnet should be automatically activated when entering the world
+					Label: 进入时激活
+					Tooltip: 进入世界时是否应自动激活磁铁
 				}
 
 				NeedsSpace: {
-					// Label: Needs Space
-					// Tooltip: Toggle if magnet should only work when there is space in the inventory
+					Label: 需要空间
+					Tooltip: 磁铁是否仅在背包有空位时才起作用
 				}
 
 				Instant: {
-					// Label: Instant
-					// Tooltip: Toggle if items should teleport instead of home - This ignores any velocity/acceleration, but not range
+					Label: 瞬移
+					Tooltip: 被吸取的物品是否瞬移而不是移动- 这会忽略任何速度/加速度，但不忽略范围
 				}
 
 				Range: {
-					// Label: Range
-					// Tooltip: Base magnet radius in tiles
+					Label: 范围
+					Tooltip: 以格为单位的基础磁铁半径
 				}
 
 				Velocity: {
-					// Label: Velocity
-					// Tooltip: Speed at which items get pulled towards you
+					Label: 速度
+					Tooltip: 物品被拉向你的速度
 				}
 
 				Acceleration: {
-					// Label: Acceleration
-					// Tooltip: How fast an item reaches its peak speed
+					Label: 加速度
+					Tooltip: 物品多快加到最高速度
 				}
 
 				ScaleMode: {
-					// Label: Scale
-					// Tooltip: Scaling Mode
+					Label: 缩放
+					Tooltip: 缩放模式
 				}
 
 				CurrentMaxRange: {
-					// Label: Resulting Max Range
-					// Tooltip: ""
+					Label: 最终的最大范围
+					Tooltip: ""
 				}
 
 				CurrentVelocity: {
-					// Label: Resulting Velocity
-					// Tooltip: ""
+					Label: 最终的速度
+					Tooltip: ""
 				}
 
 				CurrentAcceleration: {
-					// Label: Resulting Acceleration
-					// Tooltip: ""
+					Label: 最终的加速度
+					Tooltip: ""
 				}
 			}
 
 			FilterListModeType: {
-				// Tooltip: ""
-				// Blacklist.Label: Blacklist
-				// Whitelist.Label: Whitelist
+				Tooltip: ""
+				Blacklist.Label: 黑名单
+				Whitelist.Label: 白名单
 			}
 
 			ScaleModeType: {
-				// Tooltip: ""
-				// Bosses.Label: Increase With Bosses
-				// AlwaysMaxRange.Label: Bosses + Max Range
-				// OnlyConfig.Label: Custom + Max Range
+				Tooltip: ""
+				Bosses.Label: 随Boss进度增加
+				AlwaysMaxRange.Label: Boss + 最大范围
+				OnlyConfig.Label: 自定义 + 最大范围
 			}
 		}
 	}
