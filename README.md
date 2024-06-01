@@ -66,3 +66,4 @@ List of localization contributors:
 * Russian: **GodHybrid**
 * Italian: **Sea Noodle**
 * Brazilian Portuguese: **marviN**
+* Simplified Chinese: **906170601, Lacewing**
