@@ -168,7 +168,7 @@ namespace ItemMagnetPlus.Items
 					else
 					{
 						// Deactivates
-						mPlayer.DeactivateMagnet(player);
+						mPlayer.DeactivateMagnet();
 						CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, MagnetOffText.ToString());
 					}
 				}
@@ -201,7 +201,7 @@ namespace ItemMagnetPlus.Items
 						{
 							CombatText.NewText(player.getRect(), CombatText.DamagedFriendly, MagnetOffText.ToString());
 							SoundEngine.PlaySound(SoundID.MaxMana, player.Center);
-							mPlayer.DeactivateMagnet(player);
+							mPlayer.DeactivateMagnet();
 							return true;
 						}
 

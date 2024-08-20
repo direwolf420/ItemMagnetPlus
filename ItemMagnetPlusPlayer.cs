@@ -75,7 +75,7 @@ namespace ItemMagnetPlus
 			}
 		}
 
-		public void DeactivateMagnet(Player player)
+		public void DeactivateMagnet()
 		{
 			if (!Config.Instance.Buff)
 			{
@@ -83,12 +83,19 @@ namespace ItemMagnetPlus
 			}
 
 			//Clear buff either way
-			player.ClearBuff(ModContent.BuffType<ItemMagnetBuff>());
+			Player.ClearBuff(ModContent.BuffType<ItemMagnetBuff>());
 		}
 
 		public override void OnEnterWorld()
 		{
-			DeactivateMagnet(Player);
+			if (Config.Instance.OnEnter && Player.HasItem(ModContent.ItemType<ItemMagnet>()))
+			{
+				ActivateMagnet();
+			}
+			else
+			{
+				DeactivateMagnet();
+			}
 		}
 
 		public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -148,39 +155,8 @@ namespace ItemMagnetPlus
 			}
 		}
 
-		private bool entered = false;
-
-		private bool activated = false;
-
-		private void DoEnter()
-		{
-			if (Main.myPlayer != Player.whoAmI)
-			{
-				//Only client executes this
-				return;
-			}
-
-			if (!entered)
-			{
-				entered = true;
-			}
-			else
-			{
-				if (!activated)
-				{
-					activated = true;
-					if (Config.Instance.OnEnter && Player.HasItem(ModContent.ItemType<ItemMagnet>()))
-					{
-						ActivateMagnet();
-					}
-				}
-			}
-		}
-
 		public override void PreUpdate()
 		{
-			DoEnter();
-
 			//doing this only client side causes a small "lag" when the item first gets dragged toward the player
 			Config cfg = Config.Instance;
 			currentlyActive = cfg.Buff ? Player.HasBuff(ModContent.BuffType<ItemMagnetBuff>()) : magnetActive == 1;
