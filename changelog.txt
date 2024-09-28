@@ -1,3 +1,3 @@
 v{ModVersion} has been published to {tMLBuildPurpose} tML v{tMLVersion}. Learn more @ {ModHomepage}
 
-* Fixed bug where magnet would not enable if entering a subworld with the "Activate On Enter" config enabled (Subworld Library Mod)
+* Added spanish localization, thanks CDT_Maggot!

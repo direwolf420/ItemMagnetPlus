@@ -2,151 +2,151 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				// DisplayName: Item Magnet
-				// Description: A magnetic field surrounds you!
-				// CurrentRange: Current Range: {0}
-				// CurrentVelocity: Current Velocity: {0}
-				// CurrentAcceleration: Current Acceleration: {0}
+				DisplayName: Imán de Objetos
+				Description: Un Campo Magnético te rodea!
+				CurrentRange: Rango Actual: {0}
+				CurrentVelocity: Velocidad Actual: {0}
+				CurrentAcceleration: Aceleración Actual: {0}
 			}
 		}
 
 		Items: {
 			ItemMagnet: {
-				// DisplayName: Item Magnet
-				// CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
-				// CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
-				// CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				// LeftClickToChangeRange: Left Click to [c/{0}:change range]
-				// LeftClickToToggle: Left Click to [c/{0}:toggle on/off]
-				// RightClickToShowCurrentRange: Right Click to [c/{0}:show current range]
-				// RightClickToTurnOff: Right Click to [c/{0}:turn off]
-				// MagnetIsOff: Magnet is off
-				// MagnetOff: Magnet off
-				// Off: off
-				// Range: range: {0}
-				// NextRange: | next: {0}
+				DisplayName: Imán de Objetos
+				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
+				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
+				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
+				LeftClickToChangeRange: Click Izquierdo para [c/{0}:alternar rango]
+				LeftClickToToggle: Click Izquierdo para [c/{0}:activar/desactivar]
+				RightClickToShowCurrentRange: Click Derecho para [c/{0}:mostrar el rango actual]
+				RightClickToTurnOff: Right Click to [c/{0}:desactivar]
+				MagnetIsOff: El Imán está desactivado
+				MagnetOff: Imán desactivado
+				Off: desactivado
+				Range: rango: {0}
+				NextRange: | siguiente: {0}
 			}
 		}
 
 		Configs: {
 			Config: {
-				// DisplayName: Config
+				DisplayName: Configuración
 
 				Headers: {
-					// PresetItemWhitelist: Preset Item Whitelist
-					// CustomItemFilter: Custom Item Filter
-					// General: General
-					// MagnetBehavior: Magnet Behavior (Only works ingame)
-					// ResultingMagnetStats: Resulting Magnet Stats
+					PresetItemWhitelist: Lista blanca de objetos predefinidos
+					CustomItemFilter: Filtro personalizado de Objetos
+					General: General
+					MagnetBehavior: Comportamiento del Imán (Funciona solo dentro del juego)
+					ResultingMagnetStats: Estadistícas del Imán Resultante
 				}
 
 				Hearts: {
-					// Label: "[i:Heart] Hearts"
-					// Tooltip: Toggle if hearts should be picked up by the magnet
+					Label: "[i:Heart] Corazones"
+					Tooltip: Activa para permitir que el imán recoja corazones
 				}
 
 				ManaStars: {
-					// Label: "[i:Star] Mana Stars"
-					// Tooltip: Toggle if mana stars should be picked up by the magnet
+					Label: "[i:Star] Estrellas de mana"
+					Tooltip: Activa para permitir que el imán recoja estrellas de maná
 				}
 
 				Coins: {
-					// Label: "[i:GoldCoin] Coins"
-					// Tooltip: Toggle if coins should be picked up by the magnet
+					Label: "[i:GoldCoin] Monedas"
+					Tooltip: Activa para permitir que el imán recoja monedas
 				}
 
 				PickupEffect: {
-					// Label: "[i:FragmentNebula] Pickup Effect Items"
-					// Tooltip: Toggle if items like nebula armor boosters or modded items like the music notes from Thorium should be picked up by the magnet
+					Label: "[i:FragmentNebula] Atraer Objetos con efectos"
+					Tooltip: Permite que objetos como los potenciadores de armadura nebula u objetos de mods como las notas musicales de Thorium, sean recogidas por el imán
 				}
 
 				Blacklist: {
-					// Label: Magnet Blacklist
-					// Tooltip: Customize which items the magnet should never pick up
+					Label: Lista negra del Imán
+					Tooltip: Elige qué objetos nunca recogerá el Imán
 				}
 
 				Whitelist: {
-					// Label: Magnet Whitelist
-					// Tooltip: Customize which items the magnet should always pick up
+					Label: Lista blanca del Imán
+					Tooltip: Elige que objetos siempre seran recogidos por el Imán
 				}
 
 				FilterListMode: {
-					// Label: List Mode Toggle
-					// Tooltip: Change to select which list will be used for the item filter
+					Label: Cambiar el tipo de Lista
+					Tooltip: Cambia que tipo de lista es utilizada por el filtro de objetos
 				}
 
 				Buff: {
-					// Label: Buff
-					// Tooltip: Toggle if having the magnet active gives you a buff
+					Label: Potenciador
+					Tooltip: Activa para obtener un potenciador al estar activo el Imán
 				}
 
 				Held: {
-					// Label: Held
-					// Tooltip: Toggle if magnet should only work when you hold it (instead of being in the inventory)
+					Label: En mano
+					Tooltip: Activa para que el Imán solo funcione cuando lo sostienes en mano (en lugar de estar en el inventario)
 				}
 
 				OnEnter: {
-					// Label: Activate On Enter
-					// Tooltip: Toggle if magnet should be automatically activated when entering the world
+					Label: Activar al Entrar
+					Tooltip: Activa para que el Imán se active automáticamente al entrar al mundo
 				}
 
 				NeedsSpace: {
-					// Label: Needs Space
-					// Tooltip: Toggle if magnet should only work when there is space in the inventory
+					Label: Necesita Espacio
+					Tooltip: Activa para que el Imán funcione solo cuando hay espacio en el inventario
 				}
 
 				Instant: {
-					// Label: Instant
-					// Tooltip: Toggle if items should teleport instead of home - This ignores any velocity/acceleration, but not range
+					Label: Instantáneo
+					Tooltip: Activa para que los objetos se teletransporten directamente en lugar de que sean atraídos - Ignora la velocidad/aceleración, pero no el rango
 				}
 
 				Range: {
-					// Label: Range
-					// Tooltip: Base magnet radius in tiles
+					Label: Rango
+					Tooltip: Radio base del Imán (en bloques)
 				}
 
 				Velocity: {
-					// Label: Velocity
-					// Tooltip: Speed at which items get pulled towards you
+					Label: Velocidad
+					Tooltip: Velocidad a la que los objetos son atraídos hacía tí
 				}
 
 				Acceleration: {
-					// Label: Acceleration
-					// Tooltip: How fast an item reaches its peak speed
+					Label: Aceleración
+					Tooltip: Que tan rapido un objeto alcanza su velocidad máxima
 				}
 
 				ScaleMode: {
-					// Label: Scale
-					// Tooltip: Scaling Mode
+					Label: Escala
+					Tooltip: Modo Escala
 				}
 
 				CurrentMaxRange: {
-					// Label: Resulting Max Range
-					// Tooltip: ""
+					Label: Rango Máximo Resultante
+					Tooltip: ""
 				}
 
 				CurrentVelocity: {
-					// Label: Resulting Velocity
-					// Tooltip: ""
+					Label: Velocidad Resultante
+					Tooltip: ""
 				}
 
 				CurrentAcceleration: {
-					// Label: Resulting Acceleration
-					// Tooltip: ""
+					Label: Aceleración Resultante
+					Tooltip: ""
 				}
 			}
 
 			FilterListModeType: {
-				// Tooltip: ""
-				// Blacklist.Label: Blacklist
-				// Whitelist.Label: Whitelist
+				Tooltip: ""
+				Blacklist.Label: Lista Negra
+				Whitelist.Label: Lista Blanca
 			}
 
 			ScaleModeType: {
-				// Tooltip: ""
-				// Bosses.Label: Increase With Bosses
-				// AlwaysMaxRange.Label: Bosses + Max Range
-				// OnlyConfig.Label: Custom + Max Range
+				Tooltip: ""
+				Bosses.Label: Incrementa con Jefes
+				AlwaysMaxRange.Label: Jefes + Rango Máximo
+				OnlyConfig.Label: Custom + Rango Máximo
 			}
 		}
 	}

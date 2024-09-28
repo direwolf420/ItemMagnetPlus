@@ -56,3 +56,4 @@ List of localization contributors:
 * Italian: Sea Noodle
 * Brazilian Portuguese: marviN
 * Simplified Chinese: 906170601, Lacewing
+* Spanish: CDT_Maggot
