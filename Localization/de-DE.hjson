@@ -1,7 +1,7 @@
 Mods: {
 	ItemMagnetPlus: {
-		Buffs: {
-      ItemMagnetBuff: {
+			Buffs: {
+      			ItemMagnetBuff: {
 				DisplayName: Gegenstandsmagnet
 				Description: Ein Magnetfeld umgibt dich!
 				CurrentRange: Aktuelle Reichweite: {0}
