@@ -2,7 +2,7 @@ Mods: {
 	ItemMagnetPlus: {
 		Buffs: {
 			ItemMagnetBuff: {
-				DisplayName: Gegenstandsmagnet
+				DisplayName: Item-Magnet
 				Description: Ein Magnetfeld umgibt dich!
 				CurrentRange: Aktuelle Reichweite: {0}
 				CurrentVelocity: Aktuelle Geschwindigkeit: {0}
@@ -11,14 +11,14 @@ Mods: {
 		}
 		Items: {
 			ItemMagnet: {
-				DisplayName: Gegenstandsmagnet
+				DisplayName: Item-Magnet
 				CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
 				CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
 				CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				LeftClickToChangeRange: Linksklick, um [c/{0}:change range]
-				LeftClickToToggle: Linksklick, um [c/{0}:toggle on/off]
-				RightClickToShowCurrentRange: Rechtsklick, um [c/{0}:show current range]
-				RightClickToTurnOff: Rechtsklick, um [c/{0}:turn off]
+				LeftClickToChangeRange: Linksklick, um [c/{0}:den Bereich zu ändern]
+				LeftClickToToggle: Linksklick, um [c/{0}:ein-/auszuschalten]
+				RightClickToShowCurrentRange: Rechtsklick, um [c/{0}:die aktuelle Reichweite anzuzeigen]
+				RightClickToTurnOff: Rechtsklick, um [c/{0}:auszuschalten]
 				MagnetIsOff: Magnet ist aus
 				MagnetOff: Magnet aus
 				Off: aus
@@ -29,11 +29,11 @@ Mods: {
 		Configs: {
 			Config: {
 				Headers: {
-					PresetItemWhitelist: Voreingestellte Gegenstand-Whitelist
-					CustomItemFilter: Benutzerdefinierter Gegenstandsfilter
+					PresetItemWhitelist: Voreingestellte Item-Whitelist
+					CustomItemFilter: Benutzerdefinierter Item-Filter
 					General: Allgemein
 					MagnetBehavior: Magnetverhalten (Funktioniert nur im Spiel)
-					ResultingMagnetStats: Ergebniswerte des Magneten
+					ResultingMagnetStats: Finale Werte des Magneten
 				}
 				Hearts: {
 					Label: "[i:Heart] Herzen"
@@ -48,20 +48,20 @@ Mods: {
 					Tooltip: Umschalten, ob Münzen vom Magneten eingesammelt werden sollen
 				}
 				PickupEffect: {
-					Label: "[i:FragmentNebula] Aufhebeeffekt-Gegenstände"
-					Tooltip: Umschalten, ob Gegenstände wie Nebula-Rüstungsbooster oder Mod-Gegenstände wie die Musiknoten aus Thorium vom Magneten eingesammelt werden sollen
+					Label: "[i:FragmentNebula] Aufhebeeffekt-Items"
+					Tooltip: Umschalten, ob Items wie Nebula-Rüstungsbooster oder Mod-Items wie die Musiknoten aus Thorium vom Magneten eingesammelt werden sollen
 				}
 				Blacklist: {
 					Label: Magnet-Blacklist
-					Tooltip: Anpassen, welche Gegenstände der Magnet niemals aufsammeln soll
+					Tooltip: Anpassen, welche Items der Magnet niemals aufsammeln soll
 				}
 				Whitelist: {
 					Label: Magnet-Whitelist
-					Tooltip: Anpassen, welche Gegenstände der Magnet immer aufsammeln soll
+					Tooltip: Anpassen, welche Items der Magnet immer aufsammeln soll
 				}
 				FilterListMode: {
 					Label: Listenmodus-Umschalter
-					Tooltip: Ändern, um auszuwählen, welche Liste für den Gegenstandsfilter verwendet wird
+					Tooltip: Ändern, um auszuwählen, welche Liste für den Item-Filter verwendet wird
 				}
 				Buff: {
 					Label: Buff
@@ -81,7 +81,7 @@ Mods: {
 				}
 				Instant: {
 					Label: Sofort
-					Tooltip: Umschalten, ob Gegenstände sich teleportieren anstatt zu dir zu fliegen – Dies ignoriert jegliche Geschwindigkeit/Beschleunigung, aber nicht die Reichweite
+					Tooltip: Umschalten, ob Items sich teleportieren anstatt zu dir zu fliegen – Dies ignoriert jegliche Geschwindigkeit/Beschleunigung, aber nicht die Reichweite
 				}
 				Range: {
 					Label: Reichweite
@@ -89,26 +89,26 @@ Mods: {
 				}
 				Velocity: {
 					Label: Geschwindigkeit
-					Tooltip: Geschwindigkeit, mit der Gegenstände zu dir gezogen werden
+					Tooltip: Geschwindigkeit, mit der Items zu dir gezogen werden
 				}
 				Acceleration: {
 					Label: Beschleunigung
-					Tooltip: Wie schnell ein Gegenstand seine maximale Geschwindigkeit erreicht
+					Tooltip: Wie schnell ein Item seine maximale Geschwindigkeit erreicht
 				}
 				ScaleMode: {
 					Label: Skalierung
 					Tooltip: Skalierungsmodus
 				}
 				CurrentMaxRange: {
-					Label: Ergebnis-Maximalreichweite
+					Label: Finale Maximalreichweite
 					Tooltip: ""
 				}
 				CurrentVelocity: {
-					Label: Ergebnis-Geschwindigkeit
+					Label: Finale Geschwindigkeit
 					Tooltip: ""
 				}
 				CurrentAcceleration: {
-					Label: Ergebnis-Beschleunigung
+					Label: Finale Beschleunigung
 					Tooltip: ""
 				}
 			}
