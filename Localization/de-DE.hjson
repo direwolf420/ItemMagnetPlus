@@ -9,6 +9,7 @@ Mods: {
 				CurrentAcceleration: Aktuelle Beschleunigung: {0}
 			}
 		}
+
 		Items: {
 			ItemMagnet: {
 				DisplayName: Item-Magnet
@@ -26,8 +27,11 @@ Mods: {
 				NextRange: | Nächste: {0}
 			}
 		}
+
 		Configs: {
 			Config: {
+				DisplayName: Konfiguration
+
 				Headers: {
 					PresetItemWhitelist: Voreingestellte Item-Whitelist
 					CustomItemFilter: Benutzerdefinierter Item-Filter
@@ -35,88 +39,109 @@ Mods: {
 					MagnetBehavior: Magnetverhalten (Funktioniert nur im Spiel)
 					ResultingMagnetStats: Finale Werte des Magneten
 				}
+
 				Hearts: {
 					Label: "[i:Heart] Herzen"
 					Tooltip: Umschalten, ob Herzen vom Magneten eingesammelt werden sollen
 				}
+
 				ManaStars: {
 					Label: "[i:Star] Manasterne"
 					Tooltip: Umschalten, ob Manasterne vom Magneten eingesammelt werden sollen
 				}
+
 				Coins: {
 					Label: "[i:GoldCoin] Münzen"
 					Tooltip: Umschalten, ob Münzen vom Magneten eingesammelt werden sollen
 				}
+
 				PickupEffect: {
 					Label: "[i:FragmentNebula] Aufhebeeffekt-Items"
 					Tooltip: Umschalten, ob Items wie Nebula-Rüstungsbooster oder Mod-Items wie die Musiknoten aus Thorium vom Magneten eingesammelt werden sollen
 				}
+
 				Blacklist: {
 					Label: Magnet-Blacklist
 					Tooltip: Anpassen, welche Items der Magnet niemals aufsammeln soll
 				}
+
 				Whitelist: {
 					Label: Magnet-Whitelist
 					Tooltip: Anpassen, welche Items der Magnet immer aufsammeln soll
 				}
+
 				FilterListMode: {
 					Label: Listenmodus-Umschalter
 					Tooltip: Ändern, um auszuwählen, welche Liste für den Item-Filter verwendet wird
 				}
+
 				Buff: {
 					Label: Buff
 					Tooltip: Umschalten, ob der Magnet einen Buff gewährt, wenn er aktiv ist
 				}
+
 				Held: {
 					Label: Gehalten
 					Tooltip: Umschalten, ob der Magnet nur funktioniert, wenn er gehalten wird (statt sich im Inventar zu befinden)
 				}
+
 				OnEnter: {
 					Label: Aktivieren beim Betreten
 					Tooltip: Umschalten, ob der Magnet automatisch aktiviert wird, wenn die Welt betreten wird
 				}
+
 				NeedsSpace: {
 					Label: Benötigt Platz
 					Tooltip: Umschalten, ob der Magnet nur funktioniert, wenn im Inventar Platz ist
 				}
+
 				Instant: {
 					Label: Sofort
 					Tooltip: Umschalten, ob Items sich teleportieren anstatt zu dir zu fliegen – Dies ignoriert jegliche Geschwindigkeit/Beschleunigung, aber nicht die Reichweite
 				}
+
 				Range: {
 					Label: Reichweite
 					Tooltip: Basis-Magnetradius in Kacheln
 				}
+
 				Velocity: {
 					Label: Geschwindigkeit
 					Tooltip: Geschwindigkeit, mit der Items zu dir gezogen werden
 				}
+
 				Acceleration: {
 					Label: Beschleunigung
 					Tooltip: Wie schnell ein Item seine maximale Geschwindigkeit erreicht
 				}
+
 				ScaleMode: {
 					Label: Skalierung
 					Tooltip: Skalierungsmodus
 				}
+
 				CurrentMaxRange: {
 					Label: Finale Maximalreichweite
 					Tooltip: ""
 				}
+
 				CurrentVelocity: {
 					Label: Finale Geschwindigkeit
 					Tooltip: ""
 				}
+
 				CurrentAcceleration: {
 					Label: Finale Beschleunigung
 					Tooltip: ""
 				}
 			}
+
 			FilterListModeType: {
 				Tooltip: ""
 				Blacklist.Label: Blacklist
 				Whitelist.Label: Whitelist
 			}
+
 			ScaleModeType: {
 				Tooltip: ""
 				Bosses.Label: Erhöht sich mit Bossen

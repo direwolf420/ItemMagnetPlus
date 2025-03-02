@@ -1,5 +1,5 @@
 author = direwolf420
-version = 1.2.0.8
+version = 1.2.0.9
 displayName = ItemMagnetPlus
 homepage = https://forums.terraria.org/index.php?threads/itemmagnetplus-customizable-item-magnet.74425/
 hideCode = true

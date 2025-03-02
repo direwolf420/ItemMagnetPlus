@@ -68,3 +68,4 @@ List of localization contributors:
 * Brazilian Portuguese: **marviN**
 * Simplified Chinese: **906170601, Lacewing**
 * Spanish: **CDT_Maggot**
+* German: **Lighty**
