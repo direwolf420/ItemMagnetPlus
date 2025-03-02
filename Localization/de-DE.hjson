@@ -1,153 +1,128 @@
 Mods: {
-	ItemMagnetPlus: {
-		Buffs: {
-			ItemMagnetBuff: {
-				// DisplayName: Item Magnet
-				// Description: A magnetic field surrounds you!
-				// CurrentRange: Current Range: {0}
-				// CurrentVelocity: Current Velocity: {0}
-				// CurrentAcceleration: Current Acceleration: {0}
-			}
-		}
-
-		Items: {
-			ItemMagnet: {
-				// DisplayName: Item Magnet
-				// CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
-				// CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
-				// CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
-				// LeftClickToChangeRange: Left Click to [c/{0}:change range]
-				// LeftClickToToggle: Left Click to [c/{0}:toggle on/off]
-				// RightClickToShowCurrentRange: Right Click to [c/{0}:show current range]
-				// RightClickToTurnOff: Right Click to [c/{0}:turn off]
-				// MagnetIsOff: Magnet is off
-				// MagnetOff: Magnet off
-				// Off: off
-				// Range: range: {0}
-				// NextRange: | next: {0}
-			}
-		}
-
-		Configs: {
-			Config: {
-				// DisplayName: Config
-
-				Headers: {
-					// PresetItemWhitelist: Preset Item Whitelist
-					// CustomItemFilter: Custom Item Filter
-					// General: General
-					// MagnetBehavior: Magnet Behavior (Only works ingame)
-					// ResultingMagnetStats: Resulting Magnet Stats
-				}
-
-				Hearts: {
-					// Label: "[i:Heart] Hearts"
-					// Tooltip: Toggle if hearts should be picked up by the magnet
-				}
-
-				ManaStars: {
-					// Label: "[i:Star] Mana Stars"
-					// Tooltip: Toggle if mana stars should be picked up by the magnet
-				}
-
-				Coins: {
-					// Label: "[i:GoldCoin] Coins"
-					// Tooltip: Toggle if coins should be picked up by the magnet
-				}
-
-				PickupEffect: {
-					// Label: "[i:FragmentNebula] Pickup Effect Items"
-					// Tooltip: Toggle if items like nebula armor boosters or modded items like the music notes from Thorium should be picked up by the magnet
-				}
-
-				Blacklist: {
-					// Label: Magnet Blacklist
-					// Tooltip: Customize which items the magnet should never pick up
-				}
-
-				Whitelist: {
-					// Label: Magnet Whitelist
-					// Tooltip: Customize which items the magnet should always pick up
-				}
-
-				FilterListMode: {
-					// Label: List Mode Toggle
-					// Tooltip: Change to select which list will be used for the item filter
-				}
-
-				Buff: {
-					// Label: Buff
-					// Tooltip: Toggle if having the magnet active gives you a buff
-				}
-
-				Held: {
-					// Label: Held
-					// Tooltip: Toggle if magnet should only work when you hold it (instead of being in the inventory)
-				}
-
-				OnEnter: {
-					// Label: Activate On Enter
-					// Tooltip: Toggle if magnet should be automatically activated when entering the world
-				}
-
-				NeedsSpace: {
-					// Label: Needs Space
-					// Tooltip: Toggle if magnet should only work when there is space in the inventory
-				}
-
-				Instant: {
-					// Label: Instant
-					// Tooltip: Toggle if items should teleport instead of home - This ignores any velocity/acceleration, but not range
-				}
-
-				Range: {
-					// Label: Range
-					// Tooltip: Base magnet radius in tiles
-				}
-
-				Velocity: {
-					// Label: Velocity
-					// Tooltip: Speed at which items get pulled towards you
-				}
-
-				Acceleration: {
-					// Label: Acceleration
-					// Tooltip: How fast an item reaches its peak speed
-				}
-
-				ScaleMode: {
-					// Label: Scale
-					// Tooltip: Scaling Mode
-				}
-
-				CurrentMaxRange: {
-					// Label: Resulting Max Range
-					// Tooltip: ""
-				}
-
-				CurrentVelocity: {
-					// Label: Resulting Velocity
-					// Tooltip: ""
-				}
-
-				CurrentAcceleration: {
-					// Label: Resulting Acceleration
-					// Tooltip: ""
-				}
-			}
-
-			FilterListModeType: {
-				// Tooltip: ""
-				// Blacklist.Label: Blacklist
-				// Whitelist.Label: Whitelist
-			}
-
-			ScaleModeType: {
-				// Tooltip: ""
-				// Bosses.Label: Increase With Bosses
-				// AlwaysMaxRange.Label: Bosses + Max Range
-				// OnlyConfig.Label: Custom + Max Range
-			}
-		}
-	}
+  ItemMagnetPlus: {
+    Buffs: {
+      ItemMagnetBuff: {
+        DisplayName: Gegenstandsmagnet
+        Description: Ein Magnetfeld umgibt dich!
+        CurrentRange: Aktuelle Reichweite: {0}
+        CurrentVelocity: Aktuelle Geschwindigkeit: {0}
+        CurrentAcceleration: Aktuelle Beschleunigung: {0}
+      }
+    }
+    Items: {
+      ItemMagnet: {
+        DisplayName: Gegenstandsmagnet
+        CurrentRange: "{$Buffs.ItemMagnetBuff.CurrentRange}"
+        CurrentVelocity: "{$Buffs.ItemMagnetBuff.CurrentVelocity}"
+        CurrentAcceleration: "{$Buffs.ItemMagnetBuff.CurrentAcceleration}"
+        LeftClickToChangeRange: Linksklick, um [c/{0}:change range]
+        LeftClickToToggle: Linksklick, um [c/{0}:toggle on/off]
+        RightClickToShowCurrentRange: Rechtsklick, um [c/{0}:show current range]
+        RightClickToTurnOff: Rechtsklick, um [c/{0}:turn off]
+        MagnetIsOff: Magnet ist aus
+        MagnetOff: Magnet aus
+        Off: aus
+        Range: Reichweite: {0}
+        NextRange: | Nächste: {0}
+      }
+    }
+    Configs: {
+      Config: {
+        Headers: {
+          PresetItemWhitelist: Voreingestellte Gegenstand-Whitelist
+          CustomItemFilter: Benutzerdefinierter Gegenstandsfilter
+          General: Allgemein
+          MagnetBehavior: Magnetverhalten (Funktioniert nur im Spiel)
+          ResultingMagnetStats: Ergebniswerte des Magneten
+        }
+        Hearts: {
+          Label: "[i:Heart] Herzen"
+          Tooltip: Umschalten, ob Herzen vom Magneten eingesammelt werden sollen
+        }
+        ManaStars: {
+          Label: "[i:Star] Manasterne"
+          Tooltip: Umschalten, ob Manasterne vom Magneten eingesammelt werden sollen
+        }
+        Coins: {
+          Label: "[i:GoldCoin] Münzen"
+          Tooltip: Umschalten, ob Münzen vom Magneten eingesammelt werden sollen
+        }
+        PickupEffect: {
+          Label: "[i:FragmentNebula] Aufhebeeffekt-Gegenstände"
+          Tooltip: Umschalten, ob Gegenstände wie Nebula-Rüstungsbooster oder Mod-Gegenstände wie die Musiknoten aus Thorium vom Magneten eingesammelt werden sollen
+        }
+        Blacklist: {
+          Label: Magnet-Blacklist
+          Tooltip: Anpassen, welche Gegenstände der Magnet niemals aufsammeln soll
+        }
+        Whitelist: {
+          Label: Magnet-Whitelist
+          Tooltip: Anpassen, welche Gegenstände der Magnet immer aufsammeln soll
+        }
+        FilterListMode: {
+          Label: Listenmodus-Umschalter
+          Tooltip: Ändern, um auszuwählen, welche Liste für den Gegenstandsfilter verwendet wird
+        }
+        Buff: {
+          Label: Buff
+          Tooltip: Umschalten, ob der Magnet einen Buff gewährt, wenn er aktiv ist
+        }
+        Held: {
+          Label: Gehalten
+          Tooltip: Umschalten, ob der Magnet nur funktioniert, wenn er gehalten wird (statt sich im Inventar zu befinden)
+        }
+        OnEnter: {
+          Label: Aktivieren beim Betreten
+          Tooltip: Umschalten, ob der Magnet automatisch aktiviert wird, wenn die Welt betreten wird
+        }
+        NeedsSpace: {
+          Label: Benötigt Platz
+          Tooltip: Umschalten, ob der Magnet nur funktioniert, wenn im Inventar Platz ist
+        }
+        Instant: {
+          Label: Sofort
+          Tooltip: Umschalten, ob Gegenstände sich teleportieren anstatt zu dir zu fliegen – Dies ignoriert jegliche Geschwindigkeit/Beschleunigung, aber nicht die Reichweite
+        }
+        Range: {
+          Label: Reichweite
+          Tooltip: Basis-Magnetradius in Kacheln
+        }
+        Velocity: {
+          Label: Geschwindigkeit
+          Tooltip: Geschwindigkeit, mit der Gegenstände zu dir gezogen werden
+        }
+        Acceleration: {
+          Label: Beschleunigung
+          Tooltip: Wie schnell ein Gegenstand seine maximale Geschwindigkeit erreicht
+        }
+        ScaleMode: {
+          Label: Skalierung
+          Tooltip: Skalierungsmodus
+        }
+        CurrentMaxRange: {
+          Label: Ergebnis-Maximalreichweite
+          Tooltip: ""
+        }
+        CurrentVelocity: {
+          Label: Ergebnis-Geschwindigkeit
+          Tooltip: ""
+        }
+        CurrentAcceleration: {
+          Label: Ergebnis-Beschleunigung
+          Tooltip: ""
+        }
+      }
+      FilterListModeType: {
+        Tooltip: ""
+        Blacklist.Label: Blacklist
+        Whitelist.Label: Whitelist
+      }
+      ScaleModeType: {
+        Tooltip: ""
+        Bosses.Label: Erhöht sich mit Bossen
+        AlwaysMaxRange.Label: Bosse + Maximale Reichweite
+        OnlyConfig.Label: Benutzerdefiniert + Maximale Reichweite
+      }
+    }
+  }
 }
